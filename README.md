@@ -1,6 +1,18 @@
 # Devery Protocol Contracts
 
+Status: Work in progress
+
+<br />
+
+<hr />
+
+## Summary
+
 This repository contains the Devery protocol contracts on the Ethereum Network.
+
+<br />
+
+<hr />
 
 ## Plans
 
