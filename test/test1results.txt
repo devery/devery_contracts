@@ -1,89 +1,151 @@
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       15.000000000000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        6.000000000000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433        0.000000000000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
- 5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000 Account #5
- 6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.000000000000000000 Account #6
- 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Account #7
- 8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Bevery App Account
- 9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Mevery App Account
-10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Zevery App Account
-11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Bevery Fee Account
-12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Mevery Fee Account
-13 0xadda9b762a00ff12711113bfdc36958b73d7f915        0.000000000000000000           0.000000000000000000 Zevery Fee Account
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000 Bevery App Account
+ 6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.000000000000000000 Mevery App Account
+ 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Zevery App Account
+ 8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Bevery Fee Account
+ 9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Mevery Fee Account
+10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Zevery Fee Account
+11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Bevery Brand1 Account
+12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Bevery Brand2 Account
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 
 Deploy App Registry Contract
-appRegistryAddress=0xb196e7fe3b147dc8421deb884a1fba46cd8e2b63 status=0x1 Success gas=6000000 gasUsed=1025250 costETH=0.00102525 costUSD=0.31549095525 @ ETH/USD=307.721 gasPrice=1 gwei block=1286 txIx=0 txId=0x0a3d47cdea3611d9b3c42201ee472af097575d93b63f6320849a11bee94048c0 @ 1511354779 Wed, 22 Nov 2017 12:46:19 UTC
+appRegistryAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef status=0x1 Success gas=6000000 gasUsed=1045299 costETH=0.001045299 costUSD=0.321660453579 @ ETH/USD=307.721 gasPrice=1 gwei block=2372 txIx=0 txId=0x9d4aaf9e387d2c7a05396c912eb9904438bc093d0401732f2d95fe6fc7031a05 @ 1511361080 Wed, 22 Nov 2017 14:31:20 UTC
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       21.001025250000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.001025250000000000           0.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       12.001045299000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.001045299000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
- 5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000 Account #5
- 6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.000000000000000000 Account #6
- 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Account #7
- 8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Bevery App Account
- 9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Mevery App Account
-10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Zevery App Account
-11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Bevery Fee Account
-12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Mevery Fee Account
-13 0xadda9b762a00ff12711113bfdc36958b73d7f915        0.000000000000000000           0.000000000000000000 Zevery Fee Account
-14 0xb196e7fe3b147dc8421deb884a1fba46cd8e2b63        0.000000000000000000           0.000000000000000000 App Registry
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000 Bevery App Account
+ 6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.000000000000000000 Mevery App Account
+ 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Zevery App Account
+ 8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Bevery Fee Account
+ 9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Mevery Fee Account
+10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Zevery Fee Account
+11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Bevery Brand1 Account
+12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Bevery Brand2 Account
+13 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 App Registry
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Deploy App Registry Contract
-appRegistryContractAddress=0xb196e7fe3b147dc8421deb884a1fba46cd8e2b63
+appRegistryContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
 appRegistry.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 appRegistry.newOwner=0x0000000000000000000000000000000000000000
 appRegistry.appAccountsLength=0
 
-Register Apps
-registerApps1Tx status=0x1 Success gas=500000 gasUsed=128081 costETH=0.000128081 costUSD=0.039413213401 @ ETH/USD=307.721 gasPrice=1 gwei block=1288 txIx=0 txId=0xd3d40bfaf2dee2c56e6ba6b75d563b70c015b1f6a6d6fb7c2ece7ed4b39c6392 @ 1511354786 Wed, 22 Nov 2017 12:46:26 UTC
-registerApps2Tx status=0x1 Success gas=500000 gasUsed=113081 costETH=0.000113081 costUSD=0.034797398401 @ ETH/USD=307.721 gasPrice=1 gwei block=1288 txIx=2 txId=0x0c8a194f624032300bef9eabf72db3d7fa505aa6f62c85e5fd26d669feaa80bc @ 1511354786 Wed, 22 Nov 2017 12:46:26 UTC
-registerApps3Tx status=0x1 Success gas=500000 gasUsed=113017 costETH=0.000113017 costUSD=0.034777704257 @ ETH/USD=307.721 gasPrice=1 gwei block=1288 txIx=1 txId=0x994a25991b174d50487f1fdba990b8d752a540a7ed6bce4b636fad30b8115266 @ 1511354786 Wed, 22 Nov 2017 12:46:26 UTC
+Deploy Brand Registry Contract
+brandRegistryAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4 status=0x1 Success gas=6000000 gasUsed=1123726 costETH=0.001123726 costUSD=0.345794088446 @ ETH/USD=307.721 gasPrice=1 gwei block=2374 txIx=0 txId=0x22c7674497ad7a2d59820dcbbeb7a2fe29d6b85510515aa8871137bc94b83fd9 @ 1511361094 Wed, 22 Nov 2017 14:31:34 UTC
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       27.001379429000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.001025250000000000           0.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       18.002169025000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.002169025000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
- 5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000 Account #5
- 6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.000000000000000000 Account #6
- 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Account #7
- 8 0xa88a05d2b88283ce84c8325760b72a64591279a2       -0.000128081000000000           0.000000000000000000 Bevery App Account
- 9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0       -0.000113081000000000           0.000000000000000000 Mevery App Account
-10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756       -0.000113017000000000           0.000000000000000000 Zevery App Account
-11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Bevery Fee Account
-12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Mevery Fee Account
-13 0xadda9b762a00ff12711113bfdc36958b73d7f915        0.000000000000000000           0.000000000000000000 Zevery Fee Account
-14 0xb196e7fe3b147dc8421deb884a1fba46cd8e2b63        0.000000000000000000           0.000000000000000000 App Registry
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000 Bevery App Account
+ 6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.000000000000000000 Mevery App Account
+ 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Zevery App Account
+ 8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Bevery Fee Account
+ 9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Mevery Fee Account
+10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Zevery Fee Account
+11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Bevery Brand1 Account
+12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Bevery Brand2 Account
+13 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 App Registry
+14 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Brand Registry
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
-PASS Register Apps - Bevery
-PASS Register Apps - Mevery
-PASS Register Apps - Zevery
-appRegistryContractAddress=0xb196e7fe3b147dc8421deb884a1fba46cd8e2b63
+PASS Deploy Brand Registry Contract
+brandRegistryContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+brandRegistry.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+brandRegistry.newOwner=0x0000000000000000000000000000000000000000
+brandRegistry.brandAccountsLength=0
+
+Register App Accounts
+registerApps1Tx status=0x1 Success gas=500000 gasUsed=113081 costETH=0.000113081 costUSD=0.034797398401 @ ETH/USD=307.721 gasPrice=1 gwei block=2376 txIx=1 txId=0x0e07ce55c8bdf33ced052006cb7275cb12ed3e8f9f7a590732dca003e383e473 @ 1511361111 Wed, 22 Nov 2017 14:31:51 UTC
+registerApps2Tx status=0x1 Success gas=500000 gasUsed=128017 costETH=0.000128017 costUSD=0.039393519257 @ ETH/USD=307.721 gasPrice=1 gwei block=2376 txIx=0 txId=0x109920296f3f049caa7694d99601306139578afd5bd0156ae1781ce9e8e461f6 @ 1511361111 Wed, 22 Nov 2017 14:31:51 UTC
+registerApps3Tx status=0x1 Success gas=500000 gasUsed=113081 costETH=0.000113081 costUSD=0.034797398401 @ ETH/USD=307.721 gasPrice=1 gwei block=2376 txIx=2 txId=0x9bfad60886a7ce8c507525395bf8784c5794a21ed2024f6ec6b57c1cfacfe90e @ 1511361111 Wed, 22 Nov 2017 14:31:51 UTC
+ # Account                                             EtherBalanceChange                          Token Name
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       24.002523204000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.002169025000000000           0.000000000000000000 Account #1 - Contract Owner
+ 2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
+ 3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
+ 4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.000113081000000000           0.000000000000000000 Bevery App Account
+ 6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9       -0.000128017000000000           0.000000000000000000 Mevery App Account
+ 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec       -0.000113081000000000           0.000000000000000000 Zevery App Account
+ 8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Bevery Fee Account
+ 9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Mevery Fee Account
+10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Zevery Fee Account
+11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Bevery Brand1 Account
+12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Bevery Brand2 Account
+13 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 App Registry
+14 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Brand Registry
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+                                                                                    0.000000000000000000 Total Token Balances
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+
+PASS Register App Accounts - Bevery
+PASS Register App Accounts - Mevery
+PASS Register App Accounts - Zevery
+appRegistryContractAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
 appRegistry.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 appRegistry.newOwner=0x0000000000000000000000000000000000000000
 appRegistry.appAccountsLength=3
-appRegistry.appAccounts(0)=0xa88a05d2b88283ce84c8325760b72a64591279a2
-appRegistry.appAccounts(1)=0xaaaa9de1e6c564446ebca0fd102d8bd92093c756
-appRegistry.appAccounts(2)=0xa99a0ae3354c06b1459fd441a32a3f71005d7da0
-EntryAdded 0 #1288 {"appAccount":"0xa88a05d2b88283ce84c8325760b72a64591279a2","feeAccount":"0xabba43e7594e3b76afb157989e93c6621497fd4b","name":"Bevery"}
-EntryAdded 1 #1288 {"appAccount":"0xaaaa9de1e6c564446ebca0fd102d8bd92093c756","feeAccount":"0xadda9b762a00ff12711113bfdc36958b73d7f915","name":"Zevery"}
-EntryAdded 2 #1288 {"appAccount":"0xa99a0ae3354c06b1459fd441a32a3f71005d7da0","feeAccount":"0xacca534c9f62ab495bd986e002ddf0f054caae4f","name":"Mevery"}
+appRegistry.appAccounts(0)=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9
+appRegistry.appAccounts(1)=0xa55a151eb00fded1634d27d1127b4be4627079ea
+appRegistry.appAccounts(2)=0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec
+EntryAdded 0 #2376 {"appAccount":"0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","feeAccount":"0xa99a0ae3354c06b1459fd441a32a3f71005d7da0","name":"Mevery"}
+EntryAdded 1 #2376 {"appAccount":"0xa55a151eb00fded1634d27d1127b4be4627079ea","feeAccount":"0xa88a05d2b88283ce84c8325760b72a64591279a2","name":"Bevery"}
+EntryAdded 2 #2376 {"appAccount":"0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec","feeAccount":"0xaaaa9de1e6c564446ebca0fd102d8bd92093c756","name":"Zevery"}
+
+Register Brand Accounts
+registerBrands1Tx status=0x1 Success gas=500000 gasUsed=129768 costETH=0.000129768 costUSD=0.039932338728 @ ETH/USD=307.721 gasPrice=1 gwei block=2378 txIx=0 txId=0xe5c2302289ce1c62045fa8474bcc8ce33c7c0d70a974b20a499a8c08ad8d5e22 @ 1511361141 Wed, 22 Nov 2017 14:32:21 UTC
+registerBrands2Tx status=0x1 Success gas=500000 gasUsed=114768 costETH=0.000114768 costUSD=0.035316523728 @ ETH/USD=307.721 gasPrice=1 gwei block=2378 txIx=1 txId=0x0d3ebf5ce549c75e7f7ed23e1a407a939a03ea9c4cab172156e27f1297996604 @ 1511361141 Wed, 22 Nov 2017 14:32:21 UTC
+ # Account                                             EtherBalanceChange                          Token Name
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       30.002767740000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.002169025000000000           0.000000000000000000 Account #1 - Contract Owner
+ 2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
+ 3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
+ 4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.000357617000000000           0.000000000000000000 Bevery App Account
+ 6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9       -0.000128017000000000           0.000000000000000000 Mevery App Account
+ 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec       -0.000113081000000000           0.000000000000000000 Zevery App Account
+ 8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Bevery Fee Account
+ 9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Mevery Fee Account
+10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Zevery Fee Account
+11 0xabba43e7594e3b76afb157989e93c6621497fd4b        0.000000000000000000           0.000000000000000000 Bevery Brand1 Account
+12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Bevery Brand2 Account
+13 0xfa22627af9c0e35898ccf254ee6989819b2d3eef        0.000000000000000000           0.000000000000000000 App Registry
+14 0x2ea7f020f95ad692c6eef6614658f289f79549f4        0.000000000000000000           0.000000000000000000 Brand Registry
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+                                                                                    0.000000000000000000 Total Token Balances
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+
+PASS Register Brand Accounts - Bevery Brand 1
+PASS Register Brand Accounts - Bevery Brand 2
+brandRegistryContractAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4
+brandRegistry.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+brandRegistry.newOwner=0x0000000000000000000000000000000000000000
+brandRegistry.brandAccountsLength=2
+brandRegistry.brandAccounts(0)=0xabba43e7594e3b76afb157989e93c6621497fd4b
+brandRegistry.brandAccounts(1)=0xacca534c9f62ab495bd986e002ddf0f054caae4f
+EntryAdded 0 #2378 {"appAccount":"0xa55a151eb00fded1634d27d1127b4be4627079ea","brandAccount":"0xabba43e7594e3b76afb157989e93c6621497fd4b","name":"Bevery Brand 1"}
+EntryAdded 1 #2378 {"appAccount":"0xa55a151eb00fded1634d27d1127b4be4627079ea","brandAccount":"0xacca534c9f62ab495bd986e002ddf0f054caae4f","name":"Bevery Brand 2"}
 

@@ -28,7 +28,8 @@ contract DeveryAppRegistry is Admined {
     event EntryRemoved(address appAccount, string name, address feeAccount);
 
     // ------------------------------------------------------------------------
-    // Account can register a new App account, or update existing App account
+    // Account can register a new App account, or update an existing App
+    // account
     // ------------------------------------------------------------------------
     function register(string name, address feeAccount) public {
         AppRegistryEntry storage e = entries[msg.sender];
@@ -49,7 +50,7 @@ contract DeveryAppRegistry is Admined {
     }
 
     // ------------------------------------------------------------------------
-    // Account can deregister an App account, or admin can deregister
+    // Account can deregister their App account, or admin can deregister
     // ------------------------------------------------------------------------
     function deRegister(address appAccount) public {
         require(appAccount == msg.sender || isAdmin(msg.sender));
@@ -68,6 +69,11 @@ contract DeveryAppRegistry is Admined {
     function get(address appAccount) public constant returns (string name, address feeAccount) {
         AppRegistryEntry storage e = entries[appAccount];
         name = e.name;
+        feeAccount = e.feeAccount;
+    }
+
+    function getFeeAccount(address appAccount) public constant returns (address feeAccount) {
+        AppRegistryEntry storage e = entries[appAccount];
         feeAccount = e.feeAccount;
     }
 

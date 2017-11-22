@@ -1,1 +1,2 @@
-appRegistryAddress=0xb196e7fe3b147dc8421deb884a1fba46cd8e2b63
+appRegistryAddress=0xfa22627af9c0e35898ccf254ee6989819b2d3eef
+brandRegistryAddress=0x2ea7f020f95ad692c6eef6614658f289f79549f4

@@ -14,6 +14,8 @@ SOURCEDIR=`grep ^SOURCEDIR= settings.txt | sed "s/^.*=//"`
 
 APPREGISTRYSOL=`grep ^APPREGISTRYSOL= settings.txt | sed "s/^.*=//"`
 APPREGISTRYJS=`grep ^APPREGISTRYJS= settings.txt | sed "s/^.*=//"`
+BRANDREGISTRYSOL=`grep ^BRANDREGISTRYSOL= settings.txt | sed "s/^.*=//"`
+BRANDREGISTRYJS=`grep ^BRANDREGISTRYJS= settings.txt | sed "s/^.*=//"`
 
 DEPLOYMENTDATA=`grep ^DEPLOYMENTDATA= settings.txt | sed "s/^.*=//"`
 
@@ -37,19 +39,21 @@ STARTTIME_S=`date -r $STARTTIME -u`
 ENDTIME=`echo "$CURRENTTIME+60*3" | bc`
 ENDTIME_S=`date -r $ENDTIME -u`
 
-printf "MODE            = '$MODE'\n" | tee $TEST1OUTPUT
-printf "GETHATTACHPOINT = '$GETHATTACHPOINT'\n" | tee -a $TEST1OUTPUT
-printf "PASSWORD        = '$PASSWORD'\n" | tee -a $TEST1OUTPUT
-printf "SOURCEDIR       = '$SOURCEDIR'\n" | tee -a $TEST1OUTPUT
-printf "APPREGISTRYSOL  = '$APPREGISTRYSOL'\n" | tee -a $TEST1OUTPUT
-printf "APPREGISTRYJS   = '$APPREGISTRYJS'\n" | tee -a $TEST1OUTPUT
-printf "DEPLOYMENTDATA  = '$DEPLOYMENTDATA'\n" | tee -a $TEST1OUTPUT
-printf "INCLUDEJS       = '$INCLUDEJS'\n" | tee -a $TEST1OUTPUT
-printf "TEST1OUTPUT     = '$TEST1OUTPUT'\n" | tee -a $TEST1OUTPUT
-printf "TEST1RESULTS    = '$TEST1RESULTS'\n" | tee -a $TEST1OUTPUT
-printf "CURRENTTIME     = '$CURRENTTIME' '$CURRENTTIMES'\n" | tee -a $TEST1OUTPUT
-printf "STARTTIME       = '$STARTTIME' '$STARTTIME_S'\n" | tee -a $TEST1OUTPUT
-printf "ENDTIME         = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST1OUTPUT
+printf "MODE             = '$MODE'\n" | tee $TEST1OUTPUT
+printf "GETHATTACHPOINT  = '$GETHATTACHPOINT'\n" | tee -a $TEST1OUTPUT
+printf "PASSWORD         = '$PASSWORD'\n" | tee -a $TEST1OUTPUT
+printf "SOURCEDIR        = '$SOURCEDIR'\n" | tee -a $TEST1OUTPUT
+printf "APPREGISTRYSOL   = '$APPREGISTRYSOL'\n" | tee -a $TEST1OUTPUT
+printf "APPREGISTRYJS    = '$APPREGISTRYJS'\n" | tee -a $TEST1OUTPUT
+printf "BRANDREGISTRYSOL = '$BRANDREGISTRYSOL'\n" | tee -a $TEST1OUTPUT
+printf "BRANDREGISTRYJS  = '$BRANDREGISTRYJS'\n" | tee -a $TEST1OUTPUT
+printf "DEPLOYMENTDATA   = '$DEPLOYMENTDATA'\n" | tee -a $TEST1OUTPUT
+printf "INCLUDEJS        = '$INCLUDEJS'\n" | tee -a $TEST1OUTPUT
+printf "TEST1OUTPUT      = '$TEST1OUTPUT'\n" | tee -a $TEST1OUTPUT
+printf "TEST1RESULTS     = '$TEST1RESULTS'\n" | tee -a $TEST1OUTPUT
+printf "CURRENTTIME      = '$CURRENTTIME' '$CURRENTTIMES'\n" | tee -a $TEST1OUTPUT
+printf "STARTTIME        = '$STARTTIME' '$STARTTIME_S'\n" | tee -a $TEST1OUTPUT
+printf "ENDTIME          = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST1OUTPUT
 
 # Make copy of SOL file and modify start and end times ---
 # `cp modifiedContracts/SnipCoin.sol .`
@@ -68,31 +72,33 @@ DIFFS1=`diff $SOURCEDIR/$APPREGISTRYSOL $APPREGISTRYSOL`
 echo "--- Differences $SOURCEDIR/$APPREGISTRYSOL $APPREGISTRYSOL ---" | tee -a $TEST1OUTPUT
 echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
+DIFFS1=`diff $SOURCEDIR/$BRANDREGISTRYSOL $BRANDREGISTRYSOL`
+echo "--- Differences $SOURCEDIR/$BRANDREGISTRYSOL $BRANDREGISTRYSOL ---" | tee -a $TEST1OUTPUT
+echo "$DIFFS1" | tee -a $TEST1OUTPUT
+
 solc --version | tee -a $TEST1OUTPUT
 
 echo "var appRegistryOutput=`solc --optimize --combined-json abi,bin,interface $APPREGISTRYSOL`;" > $APPREGISTRYJS
+echo "var brandRegistryOutput=`solc --optimize --combined-json abi,bin,interface $BRANDREGISTRYSOL`;" > $BRANDREGISTRYJS
 
 geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST1OUTPUT
 loadScript("$APPREGISTRYJS");
+loadScript("$BRANDREGISTRYJS");
 loadScript("functions.js");
 
 var appRegistryAbi = JSON.parse(appRegistryOutput.contracts["$APPREGISTRYSOL:DeveryAppRegistry"].abi);
 var appRegistryBin = "0x" + appRegistryOutput.contracts["$APPREGISTRYSOL:DeveryAppRegistry"].bin;
-// var tokenAbi = JSON.parse(tokenOutput.contracts["$CROWDSALESOL:BTTSToken"].abi);
-// var tokenBin = "0x" + tokenOutput.contracts["$CROWDSALESOL:BTTSToken"].bin;
-// var factoryAbi = JSON.parse(tokenOutput.contracts["$CROWDSALESOL:BTTSTokenFactory"].abi);
-// var factoryBin = "0x" + tokenOutput.contracts["$CROWDSALESOL:BTTSTokenFactory"].bin;
+var brandRegistryAbi = JSON.parse(brandRegistryOutput.contracts["$BRANDREGISTRYSOL:DeveryBrandRegistry"].abi);
+var brandRegistryBin = "0x" + brandRegistryOutput.contracts["$BRANDREGISTRYSOL:DeveryBrandRegistry"].bin;
 
 // console.log("DATA: appRegistryAbi=" + JSON.stringify(appRegistryAbi));
 // console.log("DATA: appRegistryBin=" + JSON.stringify(appRegistryBin));
-// console.log("DATA: tokenAbi=" + JSON.stringify(tokenAbi));
-// console.log("DATA: tokenBin=" + JSON.stringify(tokenBin));
-
+// console.log("DATA: brandRegistryAbi=" + JSON.stringify(brandRegistryAbi));
+// console.log("DATA: brandRegistryBin=" + JSON.stringify(brandRegistryBin));
 
 unlockAccounts("$PASSWORD");
 printBalances();
 console.log("RESULT: ");
-
 
 
 // -----------------------------------------------------------------------------
@@ -100,7 +106,6 @@ var deployAppRegistryMessage = "Deploy App Registry Contract";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + deployAppRegistryMessage);
 var appRegistryContract = web3.eth.contract(appRegistryAbi);
-// console.log(JSON.stringify(tokenContract));
 var appRegistryTx = null;
 var appRegistryAddress = null;
 
@@ -130,7 +135,40 @@ console.log("RESULT: ");
 
 
 // -----------------------------------------------------------------------------
-var registerAppsMessage = "Register Apps";
+var deployBrandRegistryMessage = "Deploy Brand Registry Contract";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + deployBrandRegistryMessage);
+var brandRegistryContract = web3.eth.contract(brandRegistryAbi);
+var brandRegistryTx = null;
+var brandRegistryAddress = null;
+
+var brandRegistry = brandRegistryContract.new(appRegistryAddress, {from: contractOwnerAccount, data: brandRegistryBin, gas: 6000000, gasPrice: defaultGasPrice},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        brandRegistryTx = contract.transactionHash;
+      } else {
+        brandRegistryAddress = contract.address;
+        addAccount(brandRegistryAddress, "Brand Registry");
+        addBrandRegistryContractAddressAndAbi(brandRegistryAddress, brandRegistryAbi);
+        console.log("DATA: brandRegistryAddress=" + brandRegistryAddress);
+      }
+    }
+  }
+);
+
+while (txpool.status.pending > 0) {
+}
+
+printTxData("brandRegistryAddress=" + brandRegistryAddress, brandRegistryTx);
+printBalances();
+failIfTxStatusError(brandRegistryTx, deployBrandRegistryMessage);
+printBrandRegistryContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var registerAppsMessage = "Register App Accounts";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + registerAppsMessage);
 var registerApps1Tx = appRegistry.register("Bevery", beveryFeeAccount, {from: beveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
@@ -149,7 +187,26 @@ printAppRegistryContractDetails();
 console.log("RESULT: ");
 
 
+// -----------------------------------------------------------------------------
+var registerBrandsMessage = "Register Brand Accounts";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + registerBrandsMessage);
+var registerBrands1Tx = brandRegistry.register(beveryBrand1Account, "Bevery Brand 1", {from: beveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
+var registerBrands2Tx = brandRegistry.register(beveryBrand2Account, "Bevery Brand 2", {from: beveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+printTxData("registerBrands1Tx", registerBrands1Tx);
+printTxData("registerBrands2Tx", registerBrands2Tx);
+printBalances();
+failIfTxStatusError(registerBrands1Tx, registerBrandsMessage + " - Bevery Brand 1");
+failIfTxStatusError(registerBrands2Tx, registerBrandsMessage + " - Bevery Brand 2");
+printBrandRegistryContractDetails();
+console.log("RESULT: ");
+
+
 exit;
+
+
 
 // -----------------------------------------------------------------------------
 var deployLibraryMessage = "Deploy Crowdsale/Token Contract";

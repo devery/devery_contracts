@@ -13,15 +13,14 @@ addAccount(eth.accounts[1], "Account #1 - Contract Owner");
 addAccount(eth.accounts[2], "Account #2 - Wallet");
 addAccount(eth.accounts[3], "Account #3");
 addAccount(eth.accounts[4], "Account #4");
-addAccount(eth.accounts[5], "Account #5");
-addAccount(eth.accounts[6], "Account #6");
-addAccount(eth.accounts[7], "Account #7");
-addAccount(eth.accounts[8], "Bevery App Account");
-addAccount(eth.accounts[9], "Mevery App Account");
-addAccount(eth.accounts[10], "Zevery App Account");
-addAccount(eth.accounts[11], "Bevery Fee Account");
-addAccount(eth.accounts[12], "Mevery Fee Account");
-addAccount(eth.accounts[13], "Zevery Fee Account");
+addAccount(eth.accounts[5], "Bevery App Account");
+addAccount(eth.accounts[6], "Mevery App Account");
+addAccount(eth.accounts[7], "Zevery App Account");
+addAccount(eth.accounts[8], "Bevery Fee Account");
+addAccount(eth.accounts[9], "Mevery Fee Account");
+addAccount(eth.accounts[10], "Zevery Fee Account");
+addAccount(eth.accounts[11], "Bevery Brand1 Account");
+addAccount(eth.accounts[12], "Bevery Brand2 Account");
 
 
 var minerAccount = eth.accounts[0];
@@ -29,15 +28,14 @@ var contractOwnerAccount = eth.accounts[1];
 var wallet = eth.accounts[2];
 var account3 = eth.accounts[3];
 var account4 = eth.accounts[4];
-var account5 = eth.accounts[5];
-var account6 = eth.accounts[6];
-var account7 = eth.accounts[7];
-var beveryAppAccount = eth.accounts[8];
-var meveryAppAccount = eth.accounts[9];
-var zeveryAppAccount = eth.accounts[10];
-var beveryFeeAccount = eth.accounts[11];
-var meveryFeeAccount = eth.accounts[12];
-var zeveryFeeAccount = eth.accounts[13];
+var beveryAppAccount = eth.accounts[5];
+var meveryAppAccount = eth.accounts[6];
+var zeveryAppAccount = eth.accounts[7];
+var beveryFeeAccount = eth.accounts[8];
+var meveryFeeAccount = eth.accounts[9];
+var zeveryFeeAccount = eth.accounts[10];
+var beveryBrand1Account = eth.accounts[11];
+var beveryBrand2Account = eth.accounts[12];
 
 var baseBlock = eth.blockNumber;
 
@@ -288,6 +286,60 @@ function printAppRegistryContractDetails() {
     entryRemovedEvents.stopWatching();
 
     appRegistryFromBlock = latestBlock + 1;
+  }
+}
+
+
+//-----------------------------------------------------------------------------
+// Brand Registry Contract
+//-----------------------------------------------------------------------------
+var brandRegistryContractAddress = null;
+var brandRegistryContractAbi = null;
+
+function addBrandRegistryContractAddressAndAbi(address, tokenAbi) {
+  brandRegistryContractAddress = address;
+  brandRegistryContractAbi = tokenAbi;
+}
+
+var brandRegistryFromBlock = 0;
+
+function printBrandRegistryContractDetails() {
+  console.log("RESULT: brandRegistryContractAddress=" + brandRegistryContractAddress);
+  if (brandRegistryContractAddress != null && brandRegistryContractAbi != null) {
+    var contract = eth.contract(brandRegistryContractAbi).at(brandRegistryContractAddress);
+    console.log("RESULT: brandRegistry.owner=" + contract.owner());
+    console.log("RESULT: brandRegistry.newOwner=" + contract.newOwner());
+    console.log("RESULT: brandRegistry.brandAccountsLength=" + contract.brandAccountsLength());
+
+    var latestBlock = eth.blockNumber;
+    var i;
+
+    for (i = 0; i < contract.brandAccountsLength(); i++) {
+        console.log("RESULT: brandRegistry.brandAccounts(" + i + ")=" + contract.brandAccounts(i));
+    }
+
+    var entryAddedEvents = contract.EntryAdded({}, { fromBlock: brandRegistryFromBlock, toBlock: latestBlock });
+    i = 0;
+    entryAddedEvents.watch(function (error, result) {
+      console.log("RESULT: EntryAdded " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    entryAddedEvents.stopWatching();
+
+    var entryUpdatedEvents = contract.EntryUpdated({}, { fromBlock: brandRegistryFromBlock, toBlock: latestBlock });
+    i = 0;
+    entryUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: EntryUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    entryUpdatedEvents.stopWatching();
+
+    var entryRemovedEvents = contract.EntryRemoved({}, { fromBlock: brandRegistryFromBlock, toBlock: latestBlock });
+    i = 0;
+    entryRemovedEvents.watch(function (error, result) {
+      console.log("RESULT: EntryRemoved " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    entryRemovedEvents.stopWatching();
+
+    brandRegistryFromBlock = latestBlock + 1;
   }
 }
 
