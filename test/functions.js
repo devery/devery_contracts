@@ -16,7 +16,12 @@ addAccount(eth.accounts[4], "Account #4");
 addAccount(eth.accounts[5], "Account #5");
 addAccount(eth.accounts[6], "Account #6");
 addAccount(eth.accounts[7], "Account #7");
-addAccount(eth.accounts[8], "Fee Account");
+addAccount(eth.accounts[8], "Bevery App Account");
+addAccount(eth.accounts[9], "Mevery App Account");
+addAccount(eth.accounts[10], "Zevery App Account");
+addAccount(eth.accounts[11], "Bevery Fee Account");
+addAccount(eth.accounts[12], "Mevery Fee Account");
+addAccount(eth.accounts[13], "Zevery Fee Account");
 
 
 var minerAccount = eth.accounts[0];
@@ -27,7 +32,12 @@ var account4 = eth.accounts[4];
 var account5 = eth.accounts[5];
 var account6 = eth.accounts[6];
 var account7 = eth.accounts[7];
-var feeAccount = eth.accounts[8];
+var beveryAppAccount = eth.accounts[8];
+var meveryAppAccount = eth.accounts[9];
+var zeveryAppAccount = eth.accounts[10];
+var beveryFeeAccount = eth.accounts[11];
+var meveryFeeAccount = eth.accounts[12];
+var zeveryFeeAccount = eth.accounts[13];
 
 var baseBlock = eth.blockNumber;
 
@@ -225,6 +235,60 @@ function waitUntilBlock(message, block, addBlocks) {
   }
   console.log("RESULT: Waited until '" + message + "' #" + block + "+" + addBlocks + " = #" + b + " currentBlock=" + eth.blockNumber);
   console.log("RESULT: ");
+}
+
+
+//-----------------------------------------------------------------------------
+// App Registry Contract
+//-----------------------------------------------------------------------------
+var appRegistryContractAddress = null;
+var appRegistryContractAbi = null;
+
+function addAppRegistryContractAddressAndAbi(address, tokenAbi) {
+  appRegistryContractAddress = address;
+  appRegistryContractAbi = tokenAbi;
+}
+
+var appRegistryFromBlock = 0;
+
+function printAppRegistryContractDetails() {
+  console.log("RESULT: appRegistryContractAddress=" + appRegistryContractAddress);
+  if (appRegistryContractAddress != null && appRegistryContractAbi != null) {
+    var contract = eth.contract(appRegistryContractAbi).at(appRegistryContractAddress);
+    console.log("RESULT: appRegistry.owner=" + contract.owner());
+    console.log("RESULT: appRegistry.newOwner=" + contract.newOwner());
+    console.log("RESULT: appRegistry.appAccountsLength=" + contract.appAccountsLength());
+
+    var latestBlock = eth.blockNumber;
+    var i;
+
+    for (i = 0; i < contract.appAccountsLength(); i++) {
+        console.log("RESULT: appRegistry.appAccounts(" + i + ")=" + contract.appAccounts(i));
+    }
+
+    var entryAddedEvents = contract.EntryAdded({}, { fromBlock: appRegistryFromBlock, toBlock: latestBlock });
+    i = 0;
+    entryAddedEvents.watch(function (error, result) {
+      console.log("RESULT: EntryAdded " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    entryAddedEvents.stopWatching();
+
+    var entryUpdatedEvents = contract.EntryUpdated({}, { fromBlock: appRegistryFromBlock, toBlock: latestBlock });
+    i = 0;
+    entryUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: EntryUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    entryUpdatedEvents.stopWatching();
+
+    var entryRemovedEvents = contract.EntryRemoved({}, { fromBlock: appRegistryFromBlock, toBlock: latestBlock });
+    i = 0;
+    entryRemovedEvents.watch(function (error, result) {
+      console.log("RESULT: EntryRemoved " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    entryRemovedEvents.stopWatching();
+
+    appRegistryFromBlock = latestBlock + 1;
+  }
 }
 
 

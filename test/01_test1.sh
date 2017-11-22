@@ -83,17 +83,73 @@ var appRegistryBin = "0x" + appRegistryOutput.contracts["$APPREGISTRYSOL:DeveryA
 // var factoryAbi = JSON.parse(tokenOutput.contracts["$CROWDSALESOL:BTTSTokenFactory"].abi);
 // var factoryBin = "0x" + tokenOutput.contracts["$CROWDSALESOL:BTTSTokenFactory"].bin;
 
-console.log("DATA: appRegistryAbi=" + JSON.stringify(appRegistryAbi));
-console.log("DATA: appRegistryBin=" + JSON.stringify(appRegistryBin));
+// console.log("DATA: appRegistryAbi=" + JSON.stringify(appRegistryAbi));
+// console.log("DATA: appRegistryBin=" + JSON.stringify(appRegistryBin));
 // console.log("DATA: tokenAbi=" + JSON.stringify(tokenAbi));
 // console.log("DATA: tokenBin=" + JSON.stringify(tokenBin));
 
-exit;
 
 unlockAccounts("$PASSWORD");
 printBalances();
 console.log("RESULT: ");
 
+
+
+// -----------------------------------------------------------------------------
+var deployAppRegistryMessage = "Deploy App Registry Contract";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + deployAppRegistryMessage);
+var appRegistryContract = web3.eth.contract(appRegistryAbi);
+// console.log(JSON.stringify(tokenContract));
+var appRegistryTx = null;
+var appRegistryAddress = null;
+
+var appRegistry = appRegistryContract.new({from: contractOwnerAccount, data: appRegistryBin, gas: 6000000, gasPrice: defaultGasPrice},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        appRegistryTx = contract.transactionHash;
+      } else {
+        appRegistryAddress = contract.address;
+        addAccount(appRegistryAddress, "App Registry");
+        addAppRegistryContractAddressAndAbi(appRegistryAddress, appRegistryAbi);
+        console.log("DATA: appRegistryAddress=" + appRegistryAddress);
+      }
+    }
+  }
+);
+
+while (txpool.status.pending > 0) {
+}
+
+printTxData("appRegistryAddress=" + appRegistryAddress, appRegistryTx);
+printBalances();
+failIfTxStatusError(appRegistryTx, deployAppRegistryMessage);
+printAppRegistryContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var registerAppsMessage = "Register Apps";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + registerAppsMessage);
+var registerApps1Tx = appRegistry.register("Bevery", beveryFeeAccount, {from: beveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
+var registerApps2Tx = appRegistry.register("Mevery", meveryFeeAccount, {from: meveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
+var registerApps3Tx = appRegistry.register("Zevery", zeveryFeeAccount, {from: zeveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+printTxData("registerApps1Tx", registerApps1Tx);
+printTxData("registerApps2Tx", registerApps2Tx);
+printTxData("registerApps3Tx", registerApps3Tx);
+printBalances();
+failIfTxStatusError(registerApps1Tx, registerAppsMessage + " - Bevery");
+failIfTxStatusError(registerApps2Tx, registerAppsMessage + " - Mevery");
+failIfTxStatusError(registerApps3Tx, registerAppsMessage + " - Zevery");
+printAppRegistryContractDetails();
+console.log("RESULT: ");
+
+
+exit;
 
 // -----------------------------------------------------------------------------
 var deployLibraryMessage = "Deploy Crowdsale/Token Contract";
