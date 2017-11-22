@@ -19,8 +19,10 @@ addAccount(eth.accounts[7], "Zevery App Account");
 addAccount(eth.accounts[8], "Bevery Fee Account");
 addAccount(eth.accounts[9], "Mevery Fee Account");
 addAccount(eth.accounts[10], "Zevery Fee Account");
-addAccount(eth.accounts[11], "Bevery Brand1 Account");
-addAccount(eth.accounts[12], "Bevery Brand2 Account");
+addAccount(eth.accounts[11], "Bevery Brand 1 Account");
+addAccount(eth.accounts[12], "Bevery Brand 2 Account");
+addAccount(eth.accounts[13], "Bevery Brand 1 Product A Account");
+addAccount(eth.accounts[14], "Bevery Brand 1 Product B Account");
 
 
 var minerAccount = eth.accounts[0];
@@ -36,6 +38,8 @@ var meveryFeeAccount = eth.accounts[9];
 var zeveryFeeAccount = eth.accounts[10];
 var beveryBrand1Account = eth.accounts[11];
 var beveryBrand2Account = eth.accounts[12];
+var beveryBrand1ProductAAccount = eth.accounts[13];
+var beveryBrand1ProductBAccount = eth.accounts[14];
 
 var baseBlock = eth.blockNumber;
 
@@ -340,6 +344,60 @@ function printBrandRegistryContractDetails() {
     entryRemovedEvents.stopWatching();
 
     brandRegistryFromBlock = latestBlock + 1;
+  }
+}
+
+
+//-----------------------------------------------------------------------------
+// Product Registry Contract
+//-----------------------------------------------------------------------------
+var productRegistryContractAddress = null;
+var productRegistryContractAbi = null;
+
+function addProductRegistryContractAddressAndAbi(address, tokenAbi) {
+  productRegistryContractAddress = address;
+  productRegistryContractAbi = tokenAbi;
+}
+
+var productRegistryFromBlock = 0;
+
+function printProductRegistryContractDetails() {
+  console.log("RESULT: productRegistryContractAddress=" + productRegistryContractAddress);
+  if (productRegistryContractAddress != null && productRegistryContractAbi != null) {
+    var contract = eth.contract(productRegistryContractAbi).at(productRegistryContractAddress);
+    console.log("RESULT: productRegistry.owner=" + contract.owner());
+    console.log("RESULT: productRegistry.newOwner=" + contract.newOwner());
+    console.log("RESULT: productRegistry.productAccountsLength=" + contract.productAccountsLength());
+
+    var latestBlock = eth.blockNumber;
+    var i;
+
+    for (i = 0; i < contract.productAccountsLength(); i++) {
+        console.log("RESULT: productRegistry.productAccounts(" + i + ")=" + contract.productAccounts(i));
+    }
+
+    var entryAddedEvents = contract.EntryAdded({}, { fromBlock: productRegistryFromBlock, toBlock: latestBlock });
+    i = 0;
+    entryAddedEvents.watch(function (error, result) {
+      console.log("RESULT: EntryAdded " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    entryAddedEvents.stopWatching();
+
+    var entryUpdatedEvents = contract.EntryUpdated({}, { fromBlock: productRegistryFromBlock, toBlock: latestBlock });
+    i = 0;
+    entryUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: EntryUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    entryUpdatedEvents.stopWatching();
+
+    var entryRemovedEvents = contract.EntryRemoved({}, { fromBlock: productRegistryFromBlock, toBlock: latestBlock });
+    i = 0;
+    entryRemovedEvents.watch(function (error, result) {
+      console.log("RESULT: EntryRemoved " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    entryRemovedEvents.stopWatching();
+
+    productRegistryFromBlock = latestBlock + 1;
   }
 }
 

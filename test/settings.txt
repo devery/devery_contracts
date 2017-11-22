@@ -7,6 +7,8 @@ APPREGISTRYSOL=DeveryAppRegistry.sol
 APPREGISTRYJS=DeveryAppRegistry.js
 BRANDREGISTRYSOL=DeveryBrandRegistry.sol
 BRANDREGISTRYJS=DeveryBrandRegistry.js
+PRODUCTREGISTRYSOL=DeveryProductRegistry.sol
+PRODUCTREGISTRYJS=DeveryProductRegistry.js
 
 DEPLOYMENTDATA=deploymentData.txt
 

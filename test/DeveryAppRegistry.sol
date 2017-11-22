@@ -72,7 +72,7 @@ contract DeveryAppRegistry is Admined {
         feeAccount = e.feeAccount;
     }
 
-    function getFeeAccount(address appAccount) public constant returns (address feeAccount) {
+    function getAccounts(address appAccount) public constant returns (address feeAccount) {
         AppRegistryEntry storage e = entries[appAccount];
         feeAccount = e.feeAccount;
     }

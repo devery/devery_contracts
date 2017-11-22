@@ -16,6 +16,8 @@ APPREGISTRYSOL=`grep ^APPREGISTRYSOL= settings.txt | sed "s/^.*=//"`
 APPREGISTRYJS=`grep ^APPREGISTRYJS= settings.txt | sed "s/^.*=//"`
 BRANDREGISTRYSOL=`grep ^BRANDREGISTRYSOL= settings.txt | sed "s/^.*=//"`
 BRANDREGISTRYJS=`grep ^BRANDREGISTRYJS= settings.txt | sed "s/^.*=//"`
+PRODUCTREGISTRYSOL=`grep ^PRODUCTREGISTRYSOL= settings.txt | sed "s/^.*=//"`
+PRODUCTREGISTRYJS=`grep ^PRODUCTREGISTRYJS= settings.txt | sed "s/^.*=//"`
 
 DEPLOYMENTDATA=`grep ^DEPLOYMENTDATA= settings.txt | sed "s/^.*=//"`
 
@@ -39,21 +41,23 @@ STARTTIME_S=`date -r $STARTTIME -u`
 ENDTIME=`echo "$CURRENTTIME+60*3" | bc`
 ENDTIME_S=`date -r $ENDTIME -u`
 
-printf "MODE             = '$MODE'\n" | tee $TEST1OUTPUT
-printf "GETHATTACHPOINT  = '$GETHATTACHPOINT'\n" | tee -a $TEST1OUTPUT
-printf "PASSWORD         = '$PASSWORD'\n" | tee -a $TEST1OUTPUT
-printf "SOURCEDIR        = '$SOURCEDIR'\n" | tee -a $TEST1OUTPUT
-printf "APPREGISTRYSOL   = '$APPREGISTRYSOL'\n" | tee -a $TEST1OUTPUT
-printf "APPREGISTRYJS    = '$APPREGISTRYJS'\n" | tee -a $TEST1OUTPUT
-printf "BRANDREGISTRYSOL = '$BRANDREGISTRYSOL'\n" | tee -a $TEST1OUTPUT
-printf "BRANDREGISTRYJS  = '$BRANDREGISTRYJS'\n" | tee -a $TEST1OUTPUT
-printf "DEPLOYMENTDATA   = '$DEPLOYMENTDATA'\n" | tee -a $TEST1OUTPUT
-printf "INCLUDEJS        = '$INCLUDEJS'\n" | tee -a $TEST1OUTPUT
-printf "TEST1OUTPUT      = '$TEST1OUTPUT'\n" | tee -a $TEST1OUTPUT
-printf "TEST1RESULTS     = '$TEST1RESULTS'\n" | tee -a $TEST1OUTPUT
-printf "CURRENTTIME      = '$CURRENTTIME' '$CURRENTTIMES'\n" | tee -a $TEST1OUTPUT
-printf "STARTTIME        = '$STARTTIME' '$STARTTIME_S'\n" | tee -a $TEST1OUTPUT
-printf "ENDTIME          = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST1OUTPUT
+printf "MODE               = '$MODE'\n" | tee $TEST1OUTPUT
+printf "GETHATTACHPOINT    = '$GETHATTACHPOINT'\n" | tee -a $TEST1OUTPUT
+printf "PASSWORD           = '$PASSWORD'\n" | tee -a $TEST1OUTPUT
+printf "SOURCEDIR          = '$SOURCEDIR'\n" | tee -a $TEST1OUTPUT
+printf "APPREGISTRYSOL     = '$APPREGISTRYSOL'\n" | tee -a $TEST1OUTPUT
+printf "APPREGISTRYJS      = '$APPREGISTRYJS'\n" | tee -a $TEST1OUTPUT
+printf "BRANDREGISTRYSOL   = '$BRANDREGISTRYSOL'\n" | tee -a $TEST1OUTPUT
+printf "BRANDREGISTRYJS    = '$BRANDREGISTRYJS'\n" | tee -a $TEST1OUTPUT
+printf "PRODUCTREGISTRYSOL = '$PRODUCTREGISTRYSOL'\n" | tee -a $TEST1OUTPUT
+printf "PRODUCTREGISTRYJS  = '$PRODUCTREGISTRYJS'\n" | tee -a $TEST1OUTPUT
+printf "DEPLOYMENTDATA     = '$DEPLOYMENTDATA'\n" | tee -a $TEST1OUTPUT
+printf "INCLUDEJS          = '$INCLUDEJS'\n" | tee -a $TEST1OUTPUT
+printf "TEST1OUTPUT        = '$TEST1OUTPUT'\n" | tee -a $TEST1OUTPUT
+printf "TEST1RESULTS       = '$TEST1RESULTS'\n" | tee -a $TEST1OUTPUT
+printf "CURRENTTIME        = '$CURRENTTIME' '$CURRENTTIMES'\n" | tee -a $TEST1OUTPUT
+printf "STARTTIME          = '$STARTTIME' '$STARTTIME_S'\n" | tee -a $TEST1OUTPUT
+printf "ENDTIME            = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST1OUTPUT
 
 # Make copy of SOL file and modify start and end times ---
 # `cp modifiedContracts/SnipCoin.sol .`
@@ -76,25 +80,36 @@ DIFFS1=`diff $SOURCEDIR/$BRANDREGISTRYSOL $BRANDREGISTRYSOL`
 echo "--- Differences $SOURCEDIR/$BRANDREGISTRYSOL $BRANDREGISTRYSOL ---" | tee -a $TEST1OUTPUT
 echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
+DIFFS1=`diff $SOURCEDIR/$PRODUCTREGISTRYSOL $PRODUCTREGISTRYSOL`
+echo "--- Differences $SOURCEDIR/$PRODUCTREGISTRYSOL $PRODUCTREGISTRYSOL ---" | tee -a $TEST1OUTPUT
+echo "$DIFFS1" | tee -a $TEST1OUTPUT
+
 solc --version | tee -a $TEST1OUTPUT
 
 echo "var appRegistryOutput=`solc --optimize --combined-json abi,bin,interface $APPREGISTRYSOL`;" > $APPREGISTRYJS
 echo "var brandRegistryOutput=`solc --optimize --combined-json abi,bin,interface $BRANDREGISTRYSOL`;" > $BRANDREGISTRYJS
+echo "var productRegistryOutput=`solc --optimize --combined-json abi,bin,interface $PRODUCTREGISTRYSOL`;" > $PRODUCTREGISTRYJS
 
 geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST1OUTPUT
 loadScript("$APPREGISTRYJS");
 loadScript("$BRANDREGISTRYJS");
+loadScript("$PRODUCTREGISTRYJS");
 loadScript("functions.js");
 
 var appRegistryAbi = JSON.parse(appRegistryOutput.contracts["$APPREGISTRYSOL:DeveryAppRegistry"].abi);
 var appRegistryBin = "0x" + appRegistryOutput.contracts["$APPREGISTRYSOL:DeveryAppRegistry"].bin;
 var brandRegistryAbi = JSON.parse(brandRegistryOutput.contracts["$BRANDREGISTRYSOL:DeveryBrandRegistry"].abi);
 var brandRegistryBin = "0x" + brandRegistryOutput.contracts["$BRANDREGISTRYSOL:DeveryBrandRegistry"].bin;
+var productRegistryAbi = JSON.parse(productRegistryOutput.contracts["$PRODUCTREGISTRYSOL:DeveryProductRegistry"].abi);
+var productRegistryBin = "0x" + productRegistryOutput.contracts["$PRODUCTREGISTRYSOL:DeveryProductRegistry"].bin;
 
 // console.log("DATA: appRegistryAbi=" + JSON.stringify(appRegistryAbi));
 // console.log("DATA: appRegistryBin=" + JSON.stringify(appRegistryBin));
 // console.log("DATA: brandRegistryAbi=" + JSON.stringify(brandRegistryAbi));
 // console.log("DATA: brandRegistryBin=" + JSON.stringify(brandRegistryBin));
+// console.log("DATA: productRegistryAbi=" + JSON.stringify(productRegistryAbi));
+// console.log("DATA: productRegistryBin=" + JSON.stringify(productRegistryBin));
+
 
 unlockAccounts("$PASSWORD");
 printBalances();
@@ -168,6 +183,39 @@ console.log("RESULT: ");
 
 
 // -----------------------------------------------------------------------------
+var deployProductRegistryMessage = "Deploy Product Registry Contract";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + deployProductRegistryMessage);
+var productRegistryContract = web3.eth.contract(productRegistryAbi);
+var productRegistryTx = null;
+var productRegistryAddress = null;
+
+var productRegistry = productRegistryContract.new(appRegistryAddress, brandRegistryAddress, {from: contractOwnerAccount, data: productRegistryBin, gas: 6000000, gasPrice: defaultGasPrice},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        productRegistryTx = contract.transactionHash;
+      } else {
+        productRegistryAddress = contract.address;
+        addAccount(productRegistryAddress, "Product Registry");
+        addProductRegistryContractAddressAndAbi(productRegistryAddress, productRegistryAbi);
+        console.log("DATA: productRegistryAddress=" + productRegistryAddress);
+      }
+    }
+  }
+);
+
+while (txpool.status.pending > 0) {
+}
+
+printTxData("productRegistryAddress=" + productRegistryAddress, productRegistryTx);
+printBalances();
+failIfTxStatusError(productRegistryTx, deployProductRegistryMessage);
+printProductRegistryContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
 var registerAppsMessage = "Register App Accounts";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + registerAppsMessage);
@@ -204,8 +252,24 @@ printBrandRegistryContractDetails();
 console.log("RESULT: ");
 
 
-exit;
+// -----------------------------------------------------------------------------
+var registerProductsMessage = "Register Brand Accounts";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + registerProductsMessage);
+var registerProducts1Tx = productRegistry.register(beveryBrand1ProductAAccount, "Bevery Brand 1 Product A", "eeeeks", 2016, "AU", {from: beveryBrand1Account, gas: 500000, gasPrice: defaultGasPrice});
+var registerProducts2Tx = productRegistry.register(beveryBrand1ProductBAccount, "Bevery Brand 1 Product B", "yiikes", 2017, "AU", {from: beveryBrand1Account, gas: 500000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+printTxData("registerProducts1Tx", registerProducts1Tx);
+printTxData("registerProducts2Tx", registerProducts2Tx);
+printBalances();
+failIfTxStatusError(registerProducts1Tx, registerProductsMessage + " - Bevery Brand 1 Product A");
+failIfTxStatusError(registerProducts2Tx, registerProductsMessage + " - Bevery Brand 1 Product B");
+printProductRegistryContractDetails();
+console.log("RESULT: ");
 
+
+exit;
 
 
 // -----------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 pragma solidity ^0.4.18;
 
 // ----------------------------------------------------------------------------
-// Devery Contracts - App Registry
+// Devery Contracts - Brand Registry
 //
 // Deployed to : 
 //
@@ -13,8 +13,7 @@ pragma solidity ^0.4.18;
 import "./DeveryCommon.sol";
 
 interface DeveryAppRegistry {
-    function get(address appAccount) public constant returns (string name, address feeAccount);
-    function getFeeAccount(address appAccount) public constant returns (address feeAccount);
+    function getAccounts(address appAccount) public constant returns (address feeAccount);
 }
 
 contract DeveryBrandRegistry is Admined {
@@ -43,7 +42,7 @@ contract DeveryBrandRegistry is Admined {
     // Brand account
     // ------------------------------------------------------------------------
     function register(address brandAccount, string brandName) public {
-        address feeAccount = appRegistry.getFeeAccount(msg.sender);
+        address feeAccount = appRegistry.getAccounts(msg.sender);
         require(feeAccount != address(0));
         BrandRegistryEntry storage e = entries[brandAccount];
         if (e.appAccount == address(0)) {
@@ -82,8 +81,15 @@ contract DeveryBrandRegistry is Admined {
         BrandRegistryEntry storage e = entries[brandAccount];
         require(e.appAccount != address(0));
         appAccount = e.appAccount;
-        appFeeAccount = appRegistry.getFeeAccount(e.appAccount);
+        appFeeAccount = appRegistry.getAccounts(e.appAccount);
         brandName = e.brandName;
+    }
+
+    function getAccounts(address brandAccount) public constant returns (address appAccount, address appFeeAccount) {
+        BrandRegistryEntry storage e = entries[brandAccount];
+        require(e.appAccount != address(0));
+        appAccount = e.appAccount;
+        appFeeAccount = appRegistry.getAccounts(e.appAccount);
     }
 
     function brandAccountsLength() public constant returns (uint) {
