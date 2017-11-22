@@ -22,16 +22,16 @@ contract DeveryBrandRegistry is Admined {
     struct BrandRegistryEntry {
         address brandAccount;
         address appAccount;
-        string name;
+        string brandName;
     }
 
     DeveryAppRegistry public appRegistry; 
     mapping(address => BrandRegistryEntry) public entries;
     address[] public brandAccounts;
 
-    event EntryAdded(address brandAccount, address appAccount, string name);
-    event EntryUpdated(address brandAccount, address appAccount, string name);
-    event EntryRemoved(address brandAccount, address appAccount, string name);
+    event EntryAdded(address brandAccount, address appAccount, string brandName);
+    event EntryUpdated(address brandAccount, address appAccount, string brandName);
+    event EntryRemoved(address brandAccount, address appAccount, string brandName);
 
     function DeveryBrandRegistry(DeveryAppRegistry _appRegistry) public {
         require(_appRegistry != address(0));
@@ -42,7 +42,7 @@ contract DeveryBrandRegistry is Admined {
     // App account can register a new Brand account, or update an existing
     // Brand account
     // ------------------------------------------------------------------------
-    function register(address brandAccount, string name) public {
+    function register(address brandAccount, string brandName) public {
         address feeAccount = appRegistry.getFeeAccount(msg.sender);
         require(feeAccount != address(0));
         BrandRegistryEntry storage e = entries[brandAccount];
@@ -50,14 +50,14 @@ contract DeveryBrandRegistry is Admined {
             entries[brandAccount] = BrandRegistryEntry({
                 brandAccount: brandAccount,
                 appAccount: msg.sender,
-                name: name
+                brandName: brandName
             });
             brandAccounts.push(brandAccount);
-            EntryAdded(brandAccount, msg.sender, name);
+            EntryAdded(brandAccount, msg.sender, brandName);
         } else {
             require(msg.sender == e.appAccount);
-            e.name = name;
-            EntryUpdated(brandAccount, msg.sender, name);
+            e.brandName = brandName;
+            EntryUpdated(brandAccount, msg.sender, brandName);
         }
     }
 
@@ -74,7 +74,7 @@ contract DeveryBrandRegistry is Admined {
             }
         }
         brandAccounts.length -= 1;
-        EntryRemoved(brandAccount, e.appAccount, e.name);
+        EntryRemoved(brandAccount, e.appAccount, e.brandName);
         delete entries[brandAccount];
     }
 
@@ -83,7 +83,7 @@ contract DeveryBrandRegistry is Admined {
         require(e.appAccount != address(0));
         appAccount = e.appAccount;
         appFeeAccount = appRegistry.getFeeAccount(e.appAccount);
-        brandName = e.name;
+        brandName = e.brandName;
     }
 
     function brandAccountsLength() public constant returns (uint) {

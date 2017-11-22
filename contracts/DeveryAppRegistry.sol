@@ -16,36 +16,36 @@ contract DeveryAppRegistry is Admined {
 
     struct AppRegistryEntry {
         address appAccount;
-        string name;
+        string appName;
         address feeAccount;
     }
 
     mapping(address => AppRegistryEntry) public entries;
     address[] public appAccounts;
 
-    event EntryAdded(address appAccount, string name, address feeAccount);
-    event EntryUpdated(address appAccount, string name, address feeAccount);
-    event EntryRemoved(address appAccount, string name, address feeAccount);
+    event EntryAdded(address appAccount, string appName, address feeAccount);
+    event EntryUpdated(address appAccount, string appName, address feeAccount);
+    event EntryRemoved(address appAccount, string appName, address feeAccount);
 
     // ------------------------------------------------------------------------
     // Account can register a new App account, or update an existing App
     // account
     // ------------------------------------------------------------------------
-    function register(string name, address feeAccount) public {
+    function register(string appName, address feeAccount) public {
         AppRegistryEntry storage e = entries[msg.sender];
         if (e.appAccount == address(0)) {
             entries[msg.sender] = AppRegistryEntry({
                 appAccount: msg.sender,
-                name: name,
+                appName: appName,
                 feeAccount: feeAccount
             });
             appAccounts.push(msg.sender);
-            EntryAdded(msg.sender, name, feeAccount);
+            EntryAdded(msg.sender, appName, feeAccount);
         } else {
             require(msg.sender == e.appAccount);
-            e.name = name;
+            e.appName = appName;
             e.feeAccount = feeAccount;
-            EntryUpdated(msg.sender, name, feeAccount);
+            EntryUpdated(msg.sender, appName, feeAccount);
         }
     }
 
@@ -62,13 +62,13 @@ contract DeveryAppRegistry is Admined {
             }
         }
         appAccounts.length -= 1;
-        EntryRemoved(appAccount, e.name, e.feeAccount);
+        EntryRemoved(appAccount, e.appName, e.feeAccount);
         delete entries[appAccount];
     }
 
-    function get(address appAccount) public constant returns (string name, address feeAccount) {
+    function get(address appAccount) public constant returns (string appName, address feeAccount) {
         AppRegistryEntry storage e = entries[appAccount];
-        name = e.name;
+        appName = e.appName;
         feeAccount = e.feeAccount;
     }
 
