@@ -53,5 +53,5 @@
 * The reasons for using the test environment as listed above, instead of truffles/testrpc are:
   * The test are conducted using the actual blockchain client software as is running on Mainnet and not just a mock environment like testrpc
   * It is easy to change parameters like dates, addresses or blocknumbers using the Unix search/replace tools
-  * There have been issues in the part with version incompatibility between testrpc and solidity, i.e., version mismatches 
+  * There have been issues in the past with version incompatibility between testrpc and solidity, i.e., version mismatches 
   * The intermediate and key results are all saved to later viewing
