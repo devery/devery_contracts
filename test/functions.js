@@ -23,6 +23,10 @@ addAccount(eth.accounts[11], "Bevery Brand 1 Account");
 addAccount(eth.accounts[12], "Bevery Brand 2 Account");
 addAccount(eth.accounts[13], "Bevery Brand 1 Product A Account");
 addAccount(eth.accounts[14], "Bevery Brand 1 Product B Account");
+addAccount(eth.accounts[15], "Bevery Marker 1");
+addAccount(eth.accounts[16], "Bevery Marker 2");
+addAccount(eth.accounts[17], "Bevery Brand 1 Product A Item 1");
+addAccount(eth.accounts[18], "Bevery Brand 1 Product B Item 2");
 
 
 var minerAccount = eth.accounts[0];
@@ -40,11 +44,15 @@ var beveryBrand1Account = eth.accounts[11];
 var beveryBrand2Account = eth.accounts[12];
 var beveryBrand1ProductAAccount = eth.accounts[13];
 var beveryBrand1ProductBAccount = eth.accounts[14];
+var beveryMarker1Account = eth.accounts[15];
+var beveryMarker2Account = eth.accounts[16];
+var beveryBrand1ProductAItem1Account = eth.accounts[17];
+var beveryBrand1ProductBItem2Account = eth.accounts[18];
 
 var baseBlock = eth.blockNumber;
 
 function unlockAccounts(password) {
-  for (var i = 0; i < eth.accounts.length; i++) {
+  for (var i = 0; i < eth.accounts.length && i < accounts.length; i++) {
     personal.unlockAccount(eth.accounts[i], password, 100000);
   }
 }
@@ -243,161 +251,101 @@ function waitUntilBlock(message, block, addBlocks) {
 //-----------------------------------------------------------------------------
 // App Registry Contract
 //-----------------------------------------------------------------------------
-var appRegistryContractAddress = null;
-var appRegistryContractAbi = null;
+var registryContractAddress = null;
+var registryContractAbi = null;
 
-function addAppRegistryContractAddressAndAbi(address, tokenAbi) {
-  appRegistryContractAddress = address;
-  appRegistryContractAbi = tokenAbi;
+function addRegistryContractAddressAndAbi(address, tokenAbi) {
+  registryContractAddress = address;
+  registryContractAbi = tokenAbi;
 }
 
-var appRegistryFromBlock = 0;
+var registryFromBlock = 0;
 
-function printAppRegistryContractDetails() {
-  console.log("RESULT: appRegistryContractAddress=" + appRegistryContractAddress);
-  if (appRegistryContractAddress != null && appRegistryContractAbi != null) {
-    var contract = eth.contract(appRegistryContractAbi).at(appRegistryContractAddress);
-    console.log("RESULT: appRegistry.owner=" + contract.owner());
-    console.log("RESULT: appRegistry.newOwner=" + contract.newOwner());
-    console.log("RESULT: appRegistry.appAccountsLength=" + contract.appAccountsLength());
+function printRegistryContractDetails() {
+  console.log("RESULT: registryContractAddress=" + registryContractAddress);
+  if (registryContractAddress != null && registryContractAbi != null) {
+    var contract = eth.contract(registryContractAbi).at(registryContractAddress);
+    console.log("RESULT: registry.owner=" + contract.owner());
+    console.log("RESULT: registry.newOwner=" + contract.newOwner());
 
     var latestBlock = eth.blockNumber;
     var i;
 
-    for (i = 0; i < contract.appAccountsLength(); i++) {
-        console.log("RESULT: appRegistry.appAccounts(" + i + ")=" + contract.appAccounts(i));
+    var appAccountsLength = contract.appAccountsLength();
+    console.log("RESULT: registry.appAccountsLength=" + appAccountsLength);
+    for (i = 0; i < appAccountsLength; i++) {
+        console.log("RESULT: registry.appAccounts(" + i + ")=" + contract.appAccounts(i) + " " + JSON.stringify(contract.apps(contract.appAccounts(i))));
     }
 
-    var entryAddedEvents = contract.EntryAdded({}, { fromBlock: appRegistryFromBlock, toBlock: latestBlock });
-    i = 0;
-    entryAddedEvents.watch(function (error, result) {
-      console.log("RESULT: EntryAdded " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
-    });
-    entryAddedEvents.stopWatching();
-
-    var entryUpdatedEvents = contract.EntryUpdated({}, { fromBlock: appRegistryFromBlock, toBlock: latestBlock });
-    i = 0;
-    entryUpdatedEvents.watch(function (error, result) {
-      console.log("RESULT: EntryUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
-    });
-    entryUpdatedEvents.stopWatching();
-
-    var entryRemovedEvents = contract.EntryRemoved({}, { fromBlock: appRegistryFromBlock, toBlock: latestBlock });
-    i = 0;
-    entryRemovedEvents.watch(function (error, result) {
-      console.log("RESULT: EntryRemoved " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
-    });
-    entryRemovedEvents.stopWatching();
-
-    appRegistryFromBlock = latestBlock + 1;
-  }
-}
-
-
-//-----------------------------------------------------------------------------
-// Brand Registry Contract
-//-----------------------------------------------------------------------------
-var brandRegistryContractAddress = null;
-var brandRegistryContractAbi = null;
-
-function addBrandRegistryContractAddressAndAbi(address, tokenAbi) {
-  brandRegistryContractAddress = address;
-  brandRegistryContractAbi = tokenAbi;
-}
-
-var brandRegistryFromBlock = 0;
-
-function printBrandRegistryContractDetails() {
-  console.log("RESULT: brandRegistryContractAddress=" + brandRegistryContractAddress);
-  if (brandRegistryContractAddress != null && brandRegistryContractAbi != null) {
-    var contract = eth.contract(brandRegistryContractAbi).at(brandRegistryContractAddress);
-    console.log("RESULT: brandRegistry.owner=" + contract.owner());
-    console.log("RESULT: brandRegistry.newOwner=" + contract.newOwner());
-    console.log("RESULT: brandRegistry.brandAccountsLength=" + contract.brandAccountsLength());
-
-    var latestBlock = eth.blockNumber;
-    var i;
-
-    for (i = 0; i < contract.brandAccountsLength(); i++) {
-        console.log("RESULT: brandRegistry.brandAccounts(" + i + ")=" + contract.brandAccounts(i));
+    var brandAccountsLength = contract.brandAccountsLength();
+    console.log("RESULT: registry.brandAccountsLength=" + brandAccountsLength);
+    for (i = 0; i < brandAccountsLength; i++) {
+        console.log("RESULT: registry.brandAccounts(" + i + ")=" + contract.brandAccounts(i) + " " + JSON.stringify(contract.brands(contract.brandAccounts(i))));
     }
 
-    var entryAddedEvents = contract.EntryAdded({}, { fromBlock: brandRegistryFromBlock, toBlock: latestBlock });
-    i = 0;
-    entryAddedEvents.watch(function (error, result) {
-      console.log("RESULT: EntryAdded " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
-    });
-    entryAddedEvents.stopWatching();
-
-    var entryUpdatedEvents = contract.EntryUpdated({}, { fromBlock: brandRegistryFromBlock, toBlock: latestBlock });
-    i = 0;
-    entryUpdatedEvents.watch(function (error, result) {
-      console.log("RESULT: EntryUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
-    });
-    entryUpdatedEvents.stopWatching();
-
-    var entryRemovedEvents = contract.EntryRemoved({}, { fromBlock: brandRegistryFromBlock, toBlock: latestBlock });
-    i = 0;
-    entryRemovedEvents.watch(function (error, result) {
-      console.log("RESULT: EntryRemoved " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
-    });
-    entryRemovedEvents.stopWatching();
-
-    brandRegistryFromBlock = latestBlock + 1;
-  }
-}
-
-
-//-----------------------------------------------------------------------------
-// Product Registry Contract
-//-----------------------------------------------------------------------------
-var productRegistryContractAddress = null;
-var productRegistryContractAbi = null;
-
-function addProductRegistryContractAddressAndAbi(address, tokenAbi) {
-  productRegistryContractAddress = address;
-  productRegistryContractAbi = tokenAbi;
-}
-
-var productRegistryFromBlock = 0;
-
-function printProductRegistryContractDetails() {
-  console.log("RESULT: productRegistryContractAddress=" + productRegistryContractAddress);
-  if (productRegistryContractAddress != null && productRegistryContractAbi != null) {
-    var contract = eth.contract(productRegistryContractAbi).at(productRegistryContractAddress);
-    console.log("RESULT: productRegistry.owner=" + contract.owner());
-    console.log("RESULT: productRegistry.newOwner=" + contract.newOwner());
-    console.log("RESULT: productRegistry.productAccountsLength=" + contract.productAccountsLength());
-
-    var latestBlock = eth.blockNumber;
-    var i;
-
-    for (i = 0; i < contract.productAccountsLength(); i++) {
-        console.log("RESULT: productRegistry.productAccounts(" + i + ")=" + contract.productAccounts(i));
+    var productAccountsLength = contract.productAccountsLength();
+    console.log("RESULT: registry.productAccountsLength=" + productAccountsLength);
+    for (i = 0; i < productAccountsLength; i++) {
+        console.log("RESULT: registry.productAccounts(" + i + ")=" + contract.productAccounts(i) + " " + JSON.stringify(contract.products(contract.productAccounts(i))));
     }
 
-    var entryAddedEvents = contract.EntryAdded({}, { fromBlock: productRegistryFromBlock, toBlock: latestBlock });
+    var appAddedEvents = contract.AppAdded({}, { fromBlock: registryFromBlock, toBlock: latestBlock });
     i = 0;
-    entryAddedEvents.watch(function (error, result) {
-      console.log("RESULT: EntryAdded " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    appAddedEvents.watch(function (error, result) {
+      console.log("RESULT: AppAdded " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
     });
-    entryAddedEvents.stopWatching();
+    appAddedEvents.stopWatching();
 
-    var entryUpdatedEvents = contract.EntryUpdated({}, { fromBlock: productRegistryFromBlock, toBlock: latestBlock });
+    var appUpdatedEvents = contract.AppUpdated({}, { fromBlock: registryFromBlock, toBlock: latestBlock });
     i = 0;
-    entryUpdatedEvents.watch(function (error, result) {
-      console.log("RESULT: EntryUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    appUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: AppUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
     });
-    entryUpdatedEvents.stopWatching();
+    appUpdatedEvents.stopWatching();
 
-    var entryRemovedEvents = contract.EntryRemoved({}, { fromBlock: productRegistryFromBlock, toBlock: latestBlock });
+    var brandAddedEvents = contract.BrandAdded({}, { fromBlock: registryFromBlock, toBlock: latestBlock });
     i = 0;
-    entryRemovedEvents.watch(function (error, result) {
-      console.log("RESULT: EntryRemoved " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    brandAddedEvents.watch(function (error, result) {
+      console.log("RESULT: BrandAdded " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
     });
-    entryRemovedEvents.stopWatching();
+    brandAddedEvents.stopWatching();
 
-    productRegistryFromBlock = latestBlock + 1;
+    var brandUpdatedEvents = contract.BrandUpdated({}, { fromBlock: registryFromBlock, toBlock: latestBlock });
+    i = 0;
+    brandUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: BrandUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    brandUpdatedEvents.stopWatching();
+
+    var productAddedEvents = contract.ProductAdded({}, { fromBlock: registryFromBlock, toBlock: latestBlock });
+    i = 0;
+    productAddedEvents.watch(function (error, result) {
+      console.log("RESULT: ProductAdded " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    productAddedEvents.stopWatching();
+
+    var productUpdatedEvents = contract.ProductUpdated({}, { fromBlock: registryFromBlock, toBlock: latestBlock });
+    i = 0;
+    productUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: ProductUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    productUpdatedEvents.stopWatching();
+
+    var permissionedEvents = contract.Permissioned({}, { fromBlock: registryFromBlock, toBlock: latestBlock });
+    i = 0;
+    permissionedEvents.watch(function (error, result) {
+      console.log("RESULT: Permissioned " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    permissionedEvents.stopWatching();
+
+    var markedEvents = contract.Marked({}, { fromBlock: registryFromBlock, toBlock: latestBlock });
+    i = 0;
+    markedEvents.watch(function (error, result) {
+      console.log("RESULT: Marked " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    markedEvents.stopWatching();
+
+    registryFromBlock = latestBlock + 1;
   }
 }
 
@@ -465,59 +413,3 @@ function printTokenContractDetails() {
     tokenFromBlock = latestBlock + 1;
   }
 }
-
-
-//-----------------------------------------------------------------------------
-// Factory Contract
-//-----------------------------------------------------------------------------
-var factoryContractAddress = null;
-var factoryContractAbi = null;
-
-function addFactoryContractAddressAndAbi(address, tokenAbi) {
-  factoryContractAddress = address;
-  factoryContractAbi = tokenAbi;
-}
-
-var factoryFromBlock = 0;
-
-function getBTTSFactoryTokenListing() {
-  var addresses = [];
-  console.log("RESULT: factoryContractAddress=" + factoryContractAddress);
-  if (factoryContractAddress != null && factoryContractAbi != null) {
-    var contract = eth.contract(factoryContractAbi).at(factoryContractAddress);
-
-    var latestBlock = eth.blockNumber;
-    var i;
-
-    var bttsTokenListingEvents = contract.BTTSTokenListing({}, { fromBlock: factoryFromBlock, toBlock: latestBlock });
-    i = 0;
-    bttsTokenListingEvents.watch(function (error, result) {
-      console.log("RESULT: get BTTSTokenListing " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
-      addresses.push(result.args.bttsTokenAddress);
-    });
-    bttsTokenListingEvents.stopWatching();
-  }
-  return addresses;
-}
-
-function printFactoryContractDetails() {
-  console.log("RESULT: factoryContractAddress=" + factoryContractAddress);
-  if (factoryContractAddress != null && factoryContractAbi != null) {
-    var contract = eth.contract(factoryContractAbi).at(factoryContractAddress);
-    console.log("RESULT: factory.owner=" + contract.owner());
-    console.log("RESULT: factory.newOwner=" + contract.newOwner());
-
-    var latestBlock = eth.blockNumber;
-    var i;
-
-    var bttsTokenListingEvents = contract.BTTSTokenListing({}, { fromBlock: factoryFromBlock, toBlock: latestBlock });
-    i = 0;
-    bttsTokenListingEvents.watch(function (error, result) {
-      console.log("RESULT: BTTSTokenListing " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
-    });
-    bttsTokenListingEvents.stopWatching();
-
-    factoryFromBlock = latestBlock + 1;
-  }
-}
-

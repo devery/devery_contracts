@@ -3,12 +3,8 @@ PASSWORD=testtest
 
 SOURCEDIR=../contracts
 
-APPREGISTRYSOL=DeveryAppRegistry.sol
-APPREGISTRYJS=DeveryAppRegistry.js
-BRANDREGISTRYSOL=DeveryBrandRegistry.sol
-BRANDREGISTRYJS=DeveryBrandRegistry.js
-PRODUCTREGISTRYSOL=DeveryProductRegistry.sol
-PRODUCTREGISTRYJS=DeveryProductRegistry.js
+REGISTRYSOL=DeveryRegistry.sol
+REGISTRYJS=DeveryRegistry.js
 
 DEPLOYMENTDATA=deploymentData.txt
 
