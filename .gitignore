@@ -5,4 +5,8 @@ test/testchain/geth
 test/testchain/geth.ipc
 test/testchain/history
 test/contracts
+testOld/testchain/geth
+testOld/testchain/geth.ipc
+testOld/testchain/history
+testOld/contracts
 private
