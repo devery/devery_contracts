@@ -14,6 +14,8 @@ SOURCEDIR=`grep ^SOURCEDIR= settings.txt | sed "s/^.*=//"`
 
 REGISTRYSOL=`grep ^REGISTRYSOL= settings.txt | sed "s/^.*=//"`
 REGISTRYJS=`grep ^REGISTRYJS= settings.txt | sed "s/^.*=//"`
+TOKENSOL=`grep ^TOKENSOL= settings.txt | sed "s/^.*=//"`
+TOKENJS=`grep ^TOKENJS= settings.txt | sed "s/^.*=//"`
 
 DEPLOYMENTDATA=`grep ^DEPLOYMENTDATA= settings.txt | sed "s/^.*=//"`
 
@@ -43,6 +45,8 @@ printf "PASSWORD        = '$PASSWORD'\n" | tee -a $TEST1OUTPUT
 printf "SOURCEDIR       = '$SOURCEDIR'\n" | tee -a $TEST1OUTPUT
 printf "REGISTRYSOL     = '$REGISTRYSOL'\n" | tee -a $TEST1OUTPUT
 printf "REGISTRYJS      = '$REGISTRYJS'\n" | tee -a $TEST1OUTPUT
+printf "TOKENSOL     = '$TOKENSOL'\n" | tee -a $TEST1OUTPUT
+printf "TOKENJS      = '$TOKENJS'\n" | tee -a $TEST1OUTPUT
 printf "DEPLOYMENTDATA  = '$DEPLOYMENTDATA'\n" | tee -a $TEST1OUTPUT
 printf "INCLUDEJS       = '$INCLUDEJS'\n" | tee -a $TEST1OUTPUT
 printf "TEST1OUTPUT     = '$TEST1OUTPUT'\n" | tee -a $TEST1OUTPUT
@@ -71,16 +75,23 @@ echo "$DIFFS1" | tee -a $TEST1OUTPUT
 solc --version | tee -a $TEST1OUTPUT
 
 echo "var registryOutput=`solc --optimize --combined-json abi,bin,interface $REGISTRYSOL`;" > $REGISTRYJS
+echo "var tokenOutput=`solc --optimize --combined-json abi,bin,interface $TOKENSOL`;" > $TOKENJS
 
 geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST1OUTPUT
 loadScript("$REGISTRYJS");
+loadScript("$TOKENJS");
 loadScript("functions.js");
 
 var registryAbi = JSON.parse(registryOutput.contracts["$REGISTRYSOL:DeveryRegistry"].abi);
 var registryBin = "0x" + registryOutput.contracts["$REGISTRYSOL:DeveryRegistry"].bin;
+var tokenAbi = JSON.parse(tokenOutput.contracts["$TOKENSOL:TestEVEToken"].abi);
+var tokenBin = "0x" + tokenOutput.contracts["$TOKENSOL:TestEVEToken"].bin;
 
 // console.log("DATA: registryAbi=" + JSON.stringify(registryAbi));
 // console.log("DATA: registryBin=" + JSON.stringify(registryBin));
+// console.log("DATA: tokenAbi=" + JSON.stringify(tokenAbi));
+// console.log("DATA: tokenBin=" + JSON.stringify(tokenBin));
+
 
 unlockAccounts("$PASSWORD");
 printBalances();
@@ -116,6 +127,39 @@ while (txpool.status.pending > 0) {
 printTxData("registryAddress=" + registryAddress, registryTx);
 printBalances();
 failIfTxStatusError(registryTx, deployRegistryMessage);
+printRegistryContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var tokenMessage = "Deploy Registry Contract";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + tokenMessage);
+var tokenContract = web3.eth.contract(tokenAbi);
+var tokenTx = null;
+var tokenAddress = null;
+
+var token = tokenContract.new({from: contractOwnerAccount, data: tokenBin, gas: 6000000, gasPrice: defaultGasPrice},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        tokenTx = contract.transactionHash;
+      } else {
+        tokenAddress = contract.address;
+        addAccount(tokenAddress, "Token '" + token.symbol() + "' '" + token.name() + "'");
+        addTokenContractAddressAndAbi(tokenAddress, tokenAbi);
+        console.log("DATA: tokenAddress=" + tokenAddress);
+      }
+    }
+  }
+);
+
+while (txpool.status.pending > 0) {
+}
+
+printTxData("tokenAddress=" + tokenAddress, tokenTx);
+printBalances();
+failIfTxStatusError(tokenTx, tokenMessage);
 printRegistryContractDetails();
 console.log("RESULT: ");
 

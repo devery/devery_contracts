@@ -364,35 +364,28 @@ function printTokenContractDetails() {
     console.log("RESULT: token.symbol=" + contract.symbol());
     console.log("RESULT: token.name=" + contract.name());
     console.log("RESULT: token.decimals=" + decimals);
-    console.log("RESULT: token.decimalsFactor=" + contract.decimalsFactor());
+    // console.log("RESULT: token.decimalsFactor=" + contract.decimalsFactor());
     console.log("RESULT: token.totalSupply=" + contract.totalSupply().shift(-decimals));
-    console.log("RESULT: token.transferable=" + contract.transferable());
-    console.log("RESULT: token.mintable=" + contract.mintable());
-    console.log("RESULT: token.minter=" + contract.minter());
+    // console.log("RESULT: token.transferable=" + contract.transferable());
+    // console.log("RESULT: token.mintable=" + contract.mintable());
+    // console.log("RESULT: token.minter=" + contract.minter());
 
     var latestBlock = eth.blockNumber;
     var i;
 
-    var minterUpdatedEvents = contract.MinterUpdated({}, { fromBlock: tokenFromBlock, toBlock: latestBlock });
-    i = 0;
-    minterUpdatedEvents.watch(function (error, result) {
-      console.log("RESULT: MinterUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
-    });
-    minterUpdatedEvents.stopWatching();
+    // var minterUpdatedEvents = contract.MinterUpdated({}, { fromBlock: tokenFromBlock, toBlock: latestBlock });
+    // i = 0;
+    // minterUpdatedEvents.watch(function (error, result) {
+    //   console.log("RESULT: MinterUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    // });
+    // minterUpdatedEvents.stopWatching();
 
-    var mintingDisabledEvents = contract.MintingDisabled({}, { fromBlock: tokenFromBlock, toBlock: latestBlock });
-    i = 0;
-    mintingDisabledEvents.watch(function (error, result) {
-      console.log("RESULT: MintingDisabled " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
-    });
-    mintingDisabledEvents.stopWatching();
-
-    var minterUpdatedEvents = contract.MinterUpdated({}, { fromBlock: tokenFromBlock, toBlock: latestBlock });
-    i = 0;
-    minterUpdatedEvents.watch(function (error, result) {
-      console.log("RESULT: MinterUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
-    });
-    minterUpdatedEvents.stopWatching();
+    // var mintingDisabledEvents = contract.MintingDisabled({}, { fromBlock: tokenFromBlock, toBlock: latestBlock });
+    // i = 0;
+    // mintingDisabledEvents.watch(function (error, result) {
+    //   console.log("RESULT: MintingDisabled " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    // });
+    // mintingDisabledEvents.stopWatching();
 
     var approvalEvents = contract.Approval({}, { fromBlock: tokenFromBlock, toBlock: latestBlock });
     i = 0;

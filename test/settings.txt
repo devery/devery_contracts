@@ -5,6 +5,8 @@ SOURCEDIR=../contracts
 
 REGISTRYSOL=DeveryRegistry.sol
 REGISTRYJS=DeveryRegistry.js
+TOKENSOL=TestEVEToken.sol
+TOKENJS=TestEVEToken.js
 
 DEPLOYMENTDATA=deploymentData.txt
 
