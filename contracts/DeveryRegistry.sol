@@ -12,6 +12,23 @@ pragma solidity ^0.4.17;
 
 
 // ----------------------------------------------------------------------------
+// ERC Token Standard #20 Interface
+// https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md
+// ----------------------------------------------------------------------------
+contract ERC20Interface {
+    function totalSupply() public constant returns (uint);
+    function balanceOf(address tokenOwner) public constant returns (uint balance);
+    function allowance(address tokenOwner, address spender) public constant returns (uint remaining);
+    function transfer(address to, uint tokens) public returns (bool success);
+    function approve(address spender, uint tokens) public returns (bool success);
+    function transferFrom(address from, address to, uint tokens) public returns (bool success);
+
+    event Transfer(address indexed from, address indexed to, uint tokens);
+    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
+}
+
+
+// ----------------------------------------------------------------------------
 // Owned contract
 // ----------------------------------------------------------------------------
 contract Owned {
@@ -72,6 +89,9 @@ contract Admined is Owned {
 }
 
 
+// ----------------------------------------------------------------------------
+// Devery Registry
+// ----------------------------------------------------------------------------
 contract DeveryRegistry is Admined {
 
     struct App {
@@ -97,6 +117,7 @@ contract DeveryRegistry is Admined {
         bool active;
     }
 
+    ERC20Interface public token; 
     address public feeAccount;
     uint public fee;
     mapping(address => App) public apps;
@@ -108,7 +129,8 @@ contract DeveryRegistry is Admined {
     address[] public brandAccounts;
     address[] public productAccounts;
 
-    event FeeUpdated(address indexed feeAccount, uint fee);
+    event TokenUpdated(address indexed oldToken, address indexed newToken);
+    event FeeUpdated(address indexed oldFeeAccount, address indexed newFeeAccount, uint oldFee, uint newFee);
     event AppAdded(address indexed appAccount, string appName, address feeAccount, uint fee, bool active);
     event AppUpdated(address indexed appAccount, string appName, address feeAccount, uint fee, bool active);
     event BrandAdded(address indexed brandAccount, address indexed appAccount, string brandName, bool active);
@@ -120,12 +142,16 @@ contract DeveryRegistry is Admined {
 
 
     // ------------------------------------------------------------------------
-    // Account can add itself as an App account
+    // Token, fee account and fee
     // ------------------------------------------------------------------------
+    function setToken(address _token) public onlyAdmin {
+        TokenUpdated(address(token), _token);
+        token = ERC20Interface(_token);
+    }
     function setFee(address _feeAccount, uint _fee) public onlyAdmin {
+        FeeUpdated(feeAccount, _feeAccount, fee, _fee);
         feeAccount = _feeAccount;
         fee = _fee;
-        FeeUpdated(_feeAccount, _fee);
     }
 
     // ------------------------------------------------------------------------

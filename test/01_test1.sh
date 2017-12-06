@@ -120,13 +120,11 @@ var registry = registryContract.new({from: contractOwnerAccount, data: registryB
     }
   }
 );
-
 while (txpool.status.pending > 0) {
 }
-
-printTxData("registryAddress=" + registryAddress, registryTx);
 printBalances();
 failIfTxStatusError(registryTx, deployRegistryMessage);
+printTxData("registryAddress=" + registryAddress, registryTx);
 printRegistryContractDetails();
 console.log("RESULT: ");
 
@@ -153,27 +151,28 @@ var token = tokenContract.new({from: contractOwnerAccount, data: tokenBin, gas: 
     }
   }
 );
-
 while (txpool.status.pending > 0) {
 }
-
-printTxData("tokenAddress=" + tokenAddress, tokenTx);
 printBalances();
 failIfTxStatusError(tokenTx, tokenMessage);
+printTxData("tokenAddress=" + tokenAddress, tokenTx);
 printRegistryContractDetails();
 console.log("RESULT: ");
 
 
 // -----------------------------------------------------------------------------
-var setFeeMessage = "Set Fee Account And Fee";
+var setTokenAndFeeMessage = "Set Token, Fee Account And Fee";
 // -----------------------------------------------------------------------------
-console.log("RESULT: " + setFeeMessage);
-var setFee1Tx = registry.setFee(feeAccount, new BigNumber(0.5).shift(18), {from: contractOwnerAccount, gas: 500000, gasPrice: defaultGasPrice});
+console.log("RESULT: " + setTokenAndFeeMessage);
+var setTokenAndFee1Tx = registry.setToken(tokenAddress, {from: contractOwnerAccount, gas: 500000, gasPrice: defaultGasPrice});
+var setTokenAndFee2Tx = registry.setFee(feeAccount, new BigNumber(0.5).shift(18), {from: contractOwnerAccount, gas: 500000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
-printTxData("setFee1Tx", setFee1Tx);
 printBalances();
-failIfTxStatusError(setFee1Tx, setFeeMessage);
+failIfTxStatusError(setTokenAndFee1Tx, setTokenAndFeeMessage + " - registry.setToken(token)");
+failIfTxStatusError(setTokenAndFee1Tx, setTokenAndFeeMessage + " - registry.setFee(feeAccount, fee)");
+printTxData("setTokenAndFee1Tx", setTokenAndFee1Tx);
+printTxData("setTokenAndFee2Tx", setTokenAndFee2Tx);
 printRegistryContractDetails();
 console.log("RESULT: ");
 
@@ -187,13 +186,13 @@ var registerApps2Tx = registry.addApp("Mevery", meveryFeeAccount, new BigNumber(
 var registerApps3Tx = registry.addApp("Zevery", zeveryFeeAccount, new BigNumber(1.5).shift(18), {from: zeveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
-printTxData("registerApps1Tx", registerApps1Tx);
-printTxData("registerApps2Tx", registerApps2Tx);
-printTxData("registerApps3Tx", registerApps3Tx);
 printBalances();
 failIfTxStatusError(registerApps1Tx, registerAppsMessage + " - Bevery");
 failIfTxStatusError(registerApps2Tx, registerAppsMessage + " - Mevery");
 failIfTxStatusError(registerApps3Tx, registerAppsMessage + " - Zevery");
+printTxData("registerApps1Tx", registerApps1Tx);
+printTxData("registerApps2Tx", registerApps2Tx);
+printTxData("registerApps3Tx", registerApps3Tx);
 printRegistryContractDetails();
 console.log("RESULT: ");
 
@@ -206,11 +205,11 @@ var registerBrands1Tx = registry.addBrand(beveryBrand1Account, "Bevery Brand 1",
 var registerBrands2Tx = registry.addBrand(beveryBrand2Account, "Bevery Brand 2", {from: beveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
-printTxData("registerBrands1Tx", registerBrands1Tx);
-printTxData("registerBrands2Tx", registerBrands2Tx);
 printBalances();
 failIfTxStatusError(registerBrands1Tx, registerBrandsMessage + " - Bevery Brand 1");
 failIfTxStatusError(registerBrands2Tx, registerBrandsMessage + " - Bevery Brand 2");
+printTxData("registerBrands1Tx", registerBrands1Tx);
+printTxData("registerBrands2Tx", registerBrands2Tx);
 printRegistryContractDetails();
 console.log("RESULT: ");
 
@@ -223,11 +222,11 @@ var registerProducts1Tx = registry.addProduct(beveryBrand1ProductAAccount, "Beve
 var registerProducts2Tx = registry.addProduct(beveryBrand1ProductBAccount, "Bevery Brand 1 Product B", "yiikes", 2017, "AU", {from: beveryBrand1Account, gas: 500000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
-printTxData("registerProducts1Tx", registerProducts1Tx);
-printTxData("registerProducts2Tx", registerProducts2Tx);
 printBalances();
 failIfTxStatusError(registerProducts1Tx, registerProductsMessage + " - Bevery Brand 1 Product A");
 failIfTxStatusError(registerProducts2Tx, registerProductsMessage + " - Bevery Brand 1 Product B");
+printTxData("registerProducts1Tx", registerProducts1Tx);
+printTxData("registerProducts2Tx", registerProducts2Tx);
 printRegistryContractDetails();
 console.log("RESULT: ");
 
@@ -240,11 +239,11 @@ var permissionMarkers1Tx = registry.permissionMarker(beveryMarker1Account, true,
 var permissionMarkers2Tx = registry.permissionMarker(beveryMarker2Account, true, {from: beveryBrand1Account, gas: 500000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
-printTxData("permissionMarkers1Tx", permissionMarkers1Tx);
-printTxData("permissionMarkers2Tx", permissionMarkers2Tx);
 printBalances();
 failIfTxStatusError(permissionMarkers1Tx, permissionMarkersMessage + " - Permission Bevery Marker 1");
 failIfTxStatusError(permissionMarkers2Tx, permissionMarkersMessage + " - Permission Bevery Marker 2");
+printTxData("permissionMarkers1Tx", permissionMarkers1Tx);
+printTxData("permissionMarkers2Tx", permissionMarkers2Tx);
 printRegistryContractDetails();
 console.log("RESULT: ");
 
@@ -257,11 +256,11 @@ var markItems1Tx = registry.mark(beveryBrand1ProductAAccount, registry.addressHa
 var markItems2Tx = registry.mark(beveryBrand1ProductBAccount, registry.addressHash(beveryBrand1ProductBItem2Account), {from: beveryMarker2Account, gas: 500000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
-printTxData("markItems1Tx", markItems1Tx);
-printTxData("markItems2Tx", markItems2Tx);
 printBalances();
 failIfTxStatusError(markItems1Tx, markItemsMessage + " - Mark Bevery Brand 1 Product A Item 1");
 failIfTxStatusError(markItems2Tx, markItemsMessage + " - Mark Bevery Brand 1 Product A Item 2");
+printTxData("markItems1Tx", markItems1Tx);
+printTxData("markItems2Tx", markItems2Tx);
 printRegistryContractDetails();
 console.log("RESULT: ");
 

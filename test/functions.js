@@ -267,6 +267,7 @@ function printRegistryContractDetails() {
     var contract = eth.contract(registryContractAbi).at(registryContractAddress);
     console.log("RESULT: registry.owner=" + contract.owner());
     console.log("RESULT: registry.newOwner=" + contract.newOwner());
+    console.log("RESULT: registry.token=" + contract.token());
     console.log("RESULT: registry.feeAccount=" + contract.feeAccount());
     console.log("RESULT: registry.fee=" + contract.fee() + " " + contract.fee().shift(-18) + " ETH");
 
@@ -290,6 +291,20 @@ function printRegistryContractDetails() {
     for (i = 0; i < productAccountsLength; i++) {
         console.log("RESULT: registry.productAccounts(" + i + ")=" + contract.productAccounts(i) + " " + JSON.stringify(contract.products(contract.productAccounts(i))));
     }
+
+    var tokenUpdatedEvents = contract.TokenUpdated({}, { fromBlock: registryFromBlock, toBlock: latestBlock });
+    i = 0;
+    tokenUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: TokenUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    tokenUpdatedEvents.stopWatching();
+
+    var feeUpdatedEvents = contract.FeeUpdated({}, { fromBlock: registryFromBlock, toBlock: latestBlock });
+    i = 0;
+    feeUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: FeeUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    feeUpdatedEvents.stopWatching();
 
     var appAddedEvents = contract.AppAdded({}, { fromBlock: registryFromBlock, toBlock: latestBlock });
     i = 0;
@@ -346,13 +361,6 @@ function printRegistryContractDetails() {
       console.log("RESULT: Marked " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
     });
     markedEvents.stopWatching();
-
-    var feeUpdatedEvents = contract.FeeUpdated({}, { fromBlock: registryFromBlock, toBlock: latestBlock });
-    i = 0;
-    feeUpdatedEvents.watch(function (error, result) {
-      console.log("RESULT: FeeUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
-    });
-    feeUpdatedEvents.stopWatching();
 
     registryFromBlock = latestBlock + 1;
   }
