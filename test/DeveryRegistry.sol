@@ -97,6 +97,8 @@ contract DeveryRegistry is Admined {
         bool active;
     }
 
+    address public feeAccount;
+    uint public fee;
     mapping(address => App) public apps;
     mapping(address => Brand) public brands;
     mapping(address => Product) public products;
@@ -106,6 +108,7 @@ contract DeveryRegistry is Admined {
     address[] public brandAccounts;
     address[] public productAccounts;
 
+    event FeeUpdated(address indexed feeAccount, uint fee);
     event AppAdded(address indexed appAccount, string appName, address feeAccount, uint fee, bool active);
     event AppUpdated(address indexed appAccount, string appName, address feeAccount, uint fee, bool active);
     event BrandAdded(address indexed brandAccount, address indexed appAccount, string brandName, bool active);
@@ -119,34 +122,44 @@ contract DeveryRegistry is Admined {
     // ------------------------------------------------------------------------
     // Account can add itself as an App account
     // ------------------------------------------------------------------------
-    function addApp(string appName, address feeAccount, uint fee) public {
+    function setFee(address _feeAccount, uint _fee) public onlyAdmin {
+        feeAccount = _feeAccount;
+        fee = _fee;
+        FeeUpdated(_feeAccount, _fee);
+    }
+
+    // ------------------------------------------------------------------------
+    // Account can add itself as an App account
+    // ------------------------------------------------------------------------
+    function addApp(string appName, address _feeAccount, uint _fee) public {
         App storage e = apps[msg.sender];
         require(e.appAccount == address(0));
         apps[msg.sender] = App({
             appAccount: msg.sender,
             appName: appName,
-            feeAccount: feeAccount,
-            fee: fee,
+            feeAccount: _feeAccount,
+            fee: _fee,
             active: true
         });
         appAccounts.push(msg.sender);
-        AppAdded(msg.sender, appName, feeAccount, fee, true);
+        AppAdded(msg.sender, appName, _feeAccount, _fee, true);
     }
-    function updateApp(string appName, address feeAccount, uint fee, bool active) public {
+    function updateApp(string appName, address _feeAccount, uint _fee, bool active) public {
         App storage e = apps[msg.sender];
         require(msg.sender == e.appAccount);
         e.appName = appName;
-        e.feeAccount = feeAccount;
-        e.fee = fee;
+        e.feeAccount = _feeAccount;
+        e.fee = _fee;
         e.active = active;
-        AppUpdated(msg.sender, appName, feeAccount, fee, active);
+        AppUpdated(msg.sender, appName, _feeAccount, _fee, active);
     }
     function getApp(address appAccount) public constant returns (App app) {
         app = apps[appAccount];
     }
-    function getAppData(address appAccount) public constant returns (address feeAccount, bool active) {
+    function getAppData(address appAccount) public constant returns (address _feeAccount, uint _fee, bool active) {
         App storage e = apps[appAccount];
-        feeAccount = e.feeAccount;
+        _feeAccount = e.feeAccount;
+        _fee = e.fee;
         active = e.active;
     }
     function appAccountsLength() public constant returns (uint) {

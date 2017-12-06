@@ -45,8 +45,8 @@ printf "PASSWORD        = '$PASSWORD'\n" | tee -a $TEST1OUTPUT
 printf "SOURCEDIR       = '$SOURCEDIR'\n" | tee -a $TEST1OUTPUT
 printf "REGISTRYSOL     = '$REGISTRYSOL'\n" | tee -a $TEST1OUTPUT
 printf "REGISTRYJS      = '$REGISTRYJS'\n" | tee -a $TEST1OUTPUT
-printf "TOKENSOL     = '$TOKENSOL'\n" | tee -a $TEST1OUTPUT
-printf "TOKENJS      = '$TOKENJS'\n" | tee -a $TEST1OUTPUT
+printf "TOKENSOL        = '$TOKENSOL'\n" | tee -a $TEST1OUTPUT
+printf "TOKENJS         = '$TOKENJS'\n" | tee -a $TEST1OUTPUT
 printf "DEPLOYMENTDATA  = '$DEPLOYMENTDATA'\n" | tee -a $TEST1OUTPUT
 printf "INCLUDEJS       = '$INCLUDEJS'\n" | tee -a $TEST1OUTPUT
 printf "TEST1OUTPUT     = '$TEST1OUTPUT'\n" | tee -a $TEST1OUTPUT
@@ -160,6 +160,20 @@ while (txpool.status.pending > 0) {
 printTxData("tokenAddress=" + tokenAddress, tokenTx);
 printBalances();
 failIfTxStatusError(tokenTx, tokenMessage);
+printRegistryContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var setFeeMessage = "Set Fee Account And Fee";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + setFeeMessage);
+var setFee1Tx = registry.setFee(feeAccount, new BigNumber(0.5).shift(18), {from: contractOwnerAccount, gas: 500000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+printTxData("setFee1Tx", setFee1Tx);
+printBalances();
+failIfTxStatusError(setFee1Tx, setFeeMessage);
 printRegistryContractDetails();
 console.log("RESULT: ");
 

@@ -11,7 +11,7 @@ var accountNames = {};
 addAccount(eth.accounts[0], "Account #0 - Miner");
 addAccount(eth.accounts[1], "Account #1 - Contract Owner");
 addAccount(eth.accounts[2], "Account #2 - Wallet");
-addAccount(eth.accounts[3], "Account #3");
+addAccount(eth.accounts[3], "Account #3 - Devery Fee Account");
 addAccount(eth.accounts[4], "Account #4");
 addAccount(eth.accounts[5], "Bevery App Account");
 addAccount(eth.accounts[6], "Mevery App Account");
@@ -33,7 +33,7 @@ var minerAccount = eth.accounts[0];
 var contractOwnerAccount = eth.accounts[1];
 var wallet = eth.accounts[2];
 var account3 = eth.accounts[3];
-var account4 = eth.accounts[4];
+var feeAccount = eth.accounts[4];
 var beveryAppAccount = eth.accounts[5];
 var meveryAppAccount = eth.accounts[6];
 var zeveryAppAccount = eth.accounts[7];
@@ -267,6 +267,8 @@ function printRegistryContractDetails() {
     var contract = eth.contract(registryContractAbi).at(registryContractAddress);
     console.log("RESULT: registry.owner=" + contract.owner());
     console.log("RESULT: registry.newOwner=" + contract.newOwner());
+    console.log("RESULT: registry.feeAccount=" + contract.feeAccount());
+    console.log("RESULT: registry.fee=" + contract.fee() + " " + contract.fee().shift(-18) + " ETH");
 
     var latestBlock = eth.blockNumber;
     var i;
@@ -344,6 +346,13 @@ function printRegistryContractDetails() {
       console.log("RESULT: Marked " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
     });
     markedEvents.stopWatching();
+
+    var feeUpdatedEvents = contract.FeeUpdated({}, { fromBlock: registryFromBlock, toBlock: latestBlock });
+    i = 0;
+    feeUpdatedEvents.watch(function (error, result) {
+      console.log("RESULT: FeeUpdated " + i++ + " #" + result.blockNumber + " " + JSON.stringify(result.args));
+    });
+    feeUpdatedEvents.stopWatching();
 
     registryFromBlock = latestBlock + 1;
   }
