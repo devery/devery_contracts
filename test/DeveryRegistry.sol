@@ -78,6 +78,7 @@ contract DeveryRegistry is Admined {
         address appAccount;
         string appName;
         address feeAccount;
+        uint fee;
         bool active;
     }
     struct Brand {
@@ -105,8 +106,8 @@ contract DeveryRegistry is Admined {
     address[] public brandAccounts;
     address[] public productAccounts;
 
-    event AppAdded(address indexed appAccount, string appName, address feeAccount, bool active);
-    event AppUpdated(address indexed appAccount, string appName, address feeAccount, bool active);
+    event AppAdded(address indexed appAccount, string appName, address feeAccount, uint fee, bool active);
+    event AppUpdated(address indexed appAccount, string appName, address feeAccount, uint fee, bool active);
     event BrandAdded(address indexed brandAccount, address indexed appAccount, string brandName, bool active);
     event BrandUpdated(address indexed brandAccount, address indexed appAccount, string brandName, bool active);
     event ProductAdded(address indexed productAccount, address indexed brandAccount, address indexed appAccount, string description, bool active);
@@ -118,25 +119,27 @@ contract DeveryRegistry is Admined {
     // ------------------------------------------------------------------------
     // Account can add itself as an App account
     // ------------------------------------------------------------------------
-    function addApp(string appName, address feeAccount) public {
+    function addApp(string appName, address feeAccount, uint fee) public {
         App storage e = apps[msg.sender];
         require(e.appAccount == address(0));
         apps[msg.sender] = App({
             appAccount: msg.sender,
             appName: appName,
             feeAccount: feeAccount,
+            fee: fee,
             active: true
         });
         appAccounts.push(msg.sender);
-        AppAdded(msg.sender, appName, feeAccount, true);
+        AppAdded(msg.sender, appName, feeAccount, fee, true);
     }
-    function updateApp(string appName, address feeAccount, bool active) public {
+    function updateApp(string appName, address feeAccount, uint fee, bool active) public {
         App storage e = apps[msg.sender];
         require(msg.sender == e.appAccount);
         e.appName = appName;
         e.feeAccount = feeAccount;
+        e.fee = fee;
         e.active = active;
-        AppUpdated(msg.sender, appName, feeAccount, active);
+        AppUpdated(msg.sender, appName, feeAccount, fee, active);
     }
     function getApp(address appAccount) public constant returns (App app) {
         app = apps[appAccount];

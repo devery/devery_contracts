@@ -168,9 +168,9 @@ console.log("RESULT: ");
 var registerAppsMessage = "Register App Accounts";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + registerAppsMessage);
-var registerApps1Tx = registry.addApp("Bevery", beveryFeeAccount, {from: beveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
-var registerApps2Tx = registry.addApp("Mevery", meveryFeeAccount, {from: meveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
-var registerApps3Tx = registry.addApp("Zevery", zeveryFeeAccount, {from: zeveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
+var registerApps1Tx = registry.addApp("Bevery", beveryFeeAccount, new BigNumber(1.5).shift(18), {from: beveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
+var registerApps2Tx = registry.addApp("Mevery", meveryFeeAccount, new BigNumber(2).shift(18), {from: meveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
+var registerApps3Tx = registry.addApp("Zevery", zeveryFeeAccount, new BigNumber(1.5).shift(18), {from: zeveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
 printTxData("registerApps1Tx", registerApps1Tx);
