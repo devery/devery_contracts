@@ -272,6 +272,7 @@ failIfTxStatusError(markItems2Tx, markItemsMessage + " - Mark Bevery Brand 1 Pro
 printTxData("markItems1Tx", markItems1Tx);
 printTxData("markItems2Tx", markItems2Tx);
 printRegistryContractDetails();
+printTokenContractDetails();
 console.log("RESULT: ");
 
 var result1 = registry.check(beveryBrand1ProductAItem1Account);

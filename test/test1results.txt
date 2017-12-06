@@ -1,6 +1,6 @@
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       12.000000000000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       18.000000000000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433        0.000000000000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Devery Fee Account
@@ -27,7 +27,7 @@
 Deploy Registry Contract
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       18.002750002000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       24.002750002000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.002750002000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Devery Fee Account
@@ -46,14 +46,14 @@ Deploy Registry Contract
 16 0xb00bfde102270687324f9205b693859df64f8923        0.000000000000000000           0.000000000000000000 Bevery Marker 2
 17 0xb11be1d4ef8e94d01cb2695092a79d139a8dad98        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product A Item 1
 18 0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product B Item 2
-19 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.000000000000000000 Devery Registry
+19 0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b        0.000000000000000000           0.000000000000000000 Devery Registry
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Deploy Registry Contract
-registryAddress=0x8947c758dd866ee1c2256bd09182ef44ee825a5d status=0x1 Success gas=6000000 gasUsed=2750002 costETH=0.002750002 costUSD=0.846233365442 @ ETH/USD=307.721 gasPrice=1 gwei block=86 txIx=0 txId=0xa3cf8516e1fd513dc225b5774fff38038d56b85cd36a54fa12d21b55dd0c69f7 @ 1512583334 Wed, 06 Dec 2017 18:02:14 UTC
-registryContractAddress=0x8947c758dd866ee1c2256bd09182ef44ee825a5d
+registryAddress=0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b status=0x1 Success gas=6000000 gasUsed=2750002 costETH=0.002750002 costUSD=0.846233365442 @ ETH/USD=307.721 gasPrice=1 gwei block=134 txIx=0 txId=0x0ffe51d9b8ec976881505c235e68ff6087448ca98e506f1ab7cf44f251083fa2 @ 1512585038 Wed, 06 Dec 2017 18:30:38 UTC
+registryContractAddress=0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b
 registry.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 registry.newOwner=0x0000000000000000000000000000000000000000
 registry.token=0x0000000000000000000000000000000000000000
@@ -66,8 +66,8 @@ registry.productAccountsLength=0
 Deploy Registry Contract
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       24.003732841000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003732841000000000      100000.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       33.003711982000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003711982000000000      100000.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Devery Fee Account
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
@@ -85,28 +85,28 @@ Deploy Registry Contract
 16 0xb00bfde102270687324f9205b693859df64f8923        0.000000000000000000           0.000000000000000000 Bevery Marker 2
 17 0xb11be1d4ef8e94d01cb2695092a79d139a8dad98        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product A Item 1
 18 0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product B Item 2
-19 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.000000000000000000 Devery Registry
-20 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.000000000000000000 Token 'TestEVE' 'Test EVE'
+19 0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b        0.000000000000000000           0.000000000000000000 Devery Registry
+20 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 Token 'TestEVE' 'Test EVE'
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                100000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Deploy Registry Contract
-tokenAddress=0x8d81072d03ab6c02276501b9d3efd8e67612d52d status=0x1 Success gas=6000000 gasUsed=982839 costETH=0.000982839 costUSD=0.302440199919 @ ETH/USD=307.721 gasPrice=1 gwei block=88 txIx=0 txId=0x0bfb30e2d9ced96ec84efe807c2d480599993d000b88c14a5d5c2e93e91b8b1f @ 1512583337 Wed, 06 Dec 2017 18:02:17 UTC
-tokenContractAddress=0x8d81072d03ab6c02276501b9d3efd8e67612d52d
+tokenAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393 status=0x1 Success gas=6000000 gasUsed=961980 costETH=0.00096198 costUSD=0.29602144758 @ ETH/USD=307.721 gasPrice=1 gwei block=137 txIx=0 txId=0x04d2bad92510019ae80ee6acd2a085138cd0e41f7ccbae6a90106e348ab38c81 @ 1512585047 Wed, 06 Dec 2017 18:30:47 UTC
+tokenContractAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393
 token.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 token.newOwner=0x0000000000000000000000000000000000000000
 token.symbol=TestEVE
 token.name=Test EVE
 token.decimals=18
 token.totalSupply=100000
-Transfer 0 #88: from=0x0000000000000000000000000000000000000000 to=0xa11aae29840fbb5c86e6fd4cf809eba183aef433 tokens=100000
+Transfer 0 #137: from=0x0000000000000000000000000000000000000000 to=0xa11aae29840fbb5c86e6fd4cf809eba183aef433 tokens=100000
 
 Set Token, Fee Account And Fee
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       30.003987157000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003896047000000000       99000.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       39.003966298000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003875188000000000       99000.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Devery Fee Account
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
@@ -124,8 +124,8 @@ Set Token, Fee Account And Fee
 16 0xb00bfde102270687324f9205b693859df64f8923        0.000000000000000000           0.000000000000000000 Bevery Marker 2
 17 0xb11be1d4ef8e94d01cb2695092a79d139a8dad98        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product A Item 1
 18 0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product B Item 2
-19 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.000000000000000000 Devery Registry
-20 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.000000000000000000 Token 'TestEVE' 'Test EVE'
+19 0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b        0.000000000000000000           0.000000000000000000 Devery Registry
+20 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 Token 'TestEVE' 'Test EVE'
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                100000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -135,44 +135,44 @@ PASS Set Token, Fee Account And Fee - registry.setFee(feeAccount, fee)
 PASS Set Token, Fee Account And Fee - token.transfer(beveryBrand1Account, 1000) from contractOwnerAccount
 PASS Set Token, Fee Account And Fee - token.approve(beveryMarker1Account, 1000) from beveryBrand1Account
 PASS Set Token, Fee Account And Fee - token.approve(beveryMarker2Account, 1000) from beveryBrand1Account
-setTokenAndFee1Tx status=0x1 Success gas=500000 gasUsed=45122 costETH=0.000045122 costUSD=0.013884986962 @ ETH/USD=307.721 gasPrice=1 gwei block=90 txIx=0 txId=0xbba3fe580cf8e3964c26179265d1d86d15360050d4e9238bb40f6ea1392226e9 @ 1512583343 Wed, 06 Dec 2017 18:02:23 UTC
-setTokenAndFee2Tx status=0x1 Success gas=500000 gasUsed=66853 costETH=0.000066853 costUSD=0.020572072013 @ ETH/USD=307.721 gasPrice=1 gwei block=90 txIx=1 txId=0xaa7e18bf158c7c87ca1f8cf20ce3d7e1cefa487cdb7fa281e5fae53e754fee07 @ 1512583343 Wed, 06 Dec 2017 18:02:23 UTC
-setTokenAndFee3Tx status=0x1 Success gas=500000 gasUsed=51231 costETH=0.000051231 costUSD=0.015764854551 @ ETH/USD=307.721 gasPrice=1 gwei block=90 txIx=2 txId=0xad77f5a9af23ddd5243b095f14512fcb1fe60805ff1553c658bb39e9dc9693fc @ 1512583343 Wed, 06 Dec 2017 18:02:23 UTC
-setTokenAndFee4Tx status=0x1 Success gas=500000 gasUsed=45555 costETH=0.000045555 costUSD=0.014018230155 @ ETH/USD=307.721 gasPrice=1 gwei block=90 txIx=3 txId=0x50c1d9ec5f70ced5130379aa77fcab47ee8decab0fd4815860d8051cd76d5eb2 @ 1512583343 Wed, 06 Dec 2017 18:02:23 UTC
-setTokenAndFee5Tx status=0x1 Success gas=500000 gasUsed=45555 costETH=0.000045555 costUSD=0.014018230155 @ ETH/USD=307.721 gasPrice=1 gwei block=90 txIx=4 txId=0x574cc43f8b4ca01ef2b502b8a4dcdc02db0dafeac9aeb11a015289534b3fba5b @ 1512583343 Wed, 06 Dec 2017 18:02:23 UTC
-registryContractAddress=0x8947c758dd866ee1c2256bd09182ef44ee825a5d
+setTokenAndFee1Tx status=0x1 Success gas=500000 gasUsed=45122 costETH=0.000045122 costUSD=0.013884986962 @ ETH/USD=307.721 gasPrice=1 gwei block=139 txIx=0 txId=0x0c2f721cd5f7934ec2726fdb3b2234c8d9baac8aad2320131660b8e04ec9b263 @ 1512585052 Wed, 06 Dec 2017 18:30:52 UTC
+setTokenAndFee2Tx status=0x1 Success gas=500000 gasUsed=66853 costETH=0.000066853 costUSD=0.020572072013 @ ETH/USD=307.721 gasPrice=1 gwei block=139 txIx=1 txId=0x68d2b0f32c094758031f03428f9337b76c62f421a37ab417ae4ac0bd8cb11144 @ 1512585052 Wed, 06 Dec 2017 18:30:52 UTC
+setTokenAndFee3Tx status=0x1 Success gas=500000 gasUsed=51231 costETH=0.000051231 costUSD=0.015764854551 @ ETH/USD=307.721 gasPrice=1 gwei block=139 txIx=2 txId=0x832bcda9367baf4babc6fe177c3a5626552d04b0328526124be2a0617a66c8e5 @ 1512585052 Wed, 06 Dec 2017 18:30:52 UTC
+setTokenAndFee4Tx status=0x1 Success gas=500000 gasUsed=45555 costETH=0.000045555 costUSD=0.014018230155 @ ETH/USD=307.721 gasPrice=1 gwei block=139 txIx=3 txId=0x916829dfaf19dcb745e8cee0dbc000b2a4f6f55cd349c2d6d835713b0b1d450a @ 1512585052 Wed, 06 Dec 2017 18:30:52 UTC
+setTokenAndFee5Tx status=0x1 Success gas=500000 gasUsed=45555 costETH=0.000045555 costUSD=0.014018230155 @ ETH/USD=307.721 gasPrice=1 gwei block=139 txIx=4 txId=0x05e6453d990184b4acf0317c2f0b1f2da835e853a83038639c6891cc4900fcad @ 1512585052 Wed, 06 Dec 2017 18:30:52 UTC
+registryContractAddress=0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b
 registry.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 registry.newOwner=0x0000000000000000000000000000000000000000
-registry.token=0x8d81072d03ab6c02276501b9d3efd8e67612d52d
-registry.feeAccount=0xa44a08d3f6933c69212114bb66e2df1813651844
+registry.token=0x3529089fbacf865e6771ddb8a76ac997963a5393
+registry.feeAccount=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0
 registry.fee=500000000000000000 0.5 ETH
 registry.appAccountsLength=0
 registry.brandAccountsLength=0
 registry.productAccountsLength=0
-TokenUpdated 0 #90 {"newToken":"0x8d81072d03ab6c02276501b9d3efd8e67612d52d","oldToken":"0x0000000000000000000000000000000000000000"}
-FeeUpdated 0 #90 {"newFee":"500000000000000000","newFeeAccount":"0xa44a08d3f6933c69212114bb66e2df1813651844","oldFee":"0","oldFeeAccount":"0x0000000000000000000000000000000000000000"}
-tokenContractAddress=0x8d81072d03ab6c02276501b9d3efd8e67612d52d
+TokenUpdated 0 #139 {"newToken":"0x3529089fbacf865e6771ddb8a76ac997963a5393","oldToken":"0x0000000000000000000000000000000000000000"}
+FeeUpdated 0 #139 {"newFee":"500000000000000000","newFeeAccount":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0","oldFee":"0","oldFeeAccount":"0x0000000000000000000000000000000000000000"}
+tokenContractAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393
 token.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 token.newOwner=0x0000000000000000000000000000000000000000
 token.symbol=TestEVE
 token.name=Test EVE
 token.decimals=18
 token.totalSupply=100000
-Approval 0 #90 tokenOwner=0xabba43e7594e3b76afb157989e93c6621497fd4b spender=0xaffa4d3a80add8ce4018540e056dacb649589394 tokens=1000
-Approval 1 #90 tokenOwner=0xabba43e7594e3b76afb157989e93c6621497fd4b spender=0xb00bfde102270687324f9205b693859df64f8923 tokens=1000
-Transfer 0 #90: from=0xa11aae29840fbb5c86e6fd4cf809eba183aef433 to=0xabba43e7594e3b76afb157989e93c6621497fd4b tokens=1000
+Approval 0 #139 tokenOwner=0xabba43e7594e3b76afb157989e93c6621497fd4b spender=0xaffa4d3a80add8ce4018540e056dacb649589394 tokens=1000
+Approval 1 #139 tokenOwner=0xabba43e7594e3b76afb157989e93c6621497fd4b spender=0xb00bfde102270687324f9205b693859df64f8923 tokens=1000
+Transfer 0 #139: from=0xa11aae29840fbb5c86e6fd4cf809eba183aef433 to=0xabba43e7594e3b76afb157989e93c6621497fd4b tokens=1000
 
 Register App Accounts
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       36.004466592000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003896047000000000       99000.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       48.004445733000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003875188000000000       99000.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Devery Fee Account
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
- 5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.000169833000000000           0.000000000000000000 Bevery App Account
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.000154833000000000           0.000000000000000000 Bevery App Account
  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9       -0.000154769000000000           0.000000000000000000 Mevery App Account
- 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec       -0.000154833000000000           0.000000000000000000 Zevery App Account
+ 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec       -0.000169833000000000           0.000000000000000000 Zevery App Account
  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Bevery Fee Account
  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Mevery Fee Account
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Zevery Fee Account
@@ -184,8 +184,8 @@ Register App Accounts
 16 0xb00bfde102270687324f9205b693859df64f8923        0.000000000000000000           0.000000000000000000 Bevery Marker 2
 17 0xb11be1d4ef8e94d01cb2695092a79d139a8dad98        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product A Item 1
 18 0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product B Item 2
-19 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.000000000000000000 Devery Registry
-20 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.000000000000000000 Token 'TestEVE' 'Test EVE'
+19 0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b        0.000000000000000000           0.000000000000000000 Devery Registry
+20 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 Token 'TestEVE' 'Test EVE'
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                100000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -193,36 +193,36 @@ Register App Accounts
 PASS Register App Accounts - Bevery
 PASS Register App Accounts - Mevery
 PASS Register App Accounts - Zevery
-registerApps1Tx status=0x1 Success gas=500000 gasUsed=169833 costETH=0.000169833 costUSD=0.052261180593 @ ETH/USD=307.721 gasPrice=1 gwei block=92 txIx=0 txId=0x340609ed46a1478c5841a89c9ff653fac3b336b4e1c3eb0aa55062409441d560 @ 1512583345 Wed, 06 Dec 2017 18:02:25 UTC
-registerApps2Tx status=0x1 Success gas=500000 gasUsed=154769 costETH=0.000154769 costUSD=0.047625671449 @ ETH/USD=307.721 gasPrice=1 gwei block=92 txIx=2 txId=0x2451fbdee2d8829a1017506dbbc3a388b98830d6ecbbd8d85ec123f6f144a49a @ 1512583345 Wed, 06 Dec 2017 18:02:25 UTC
-registerApps3Tx status=0x1 Success gas=500000 gasUsed=154833 costETH=0.000154833 costUSD=0.047645365593 @ ETH/USD=307.721 gasPrice=1 gwei block=92 txIx=1 txId=0x37ae8e8e992f2455f5aa9235e26b47e2e018854d7c130c583e1292045a007167 @ 1512583345 Wed, 06 Dec 2017 18:02:25 UTC
-registryContractAddress=0x8947c758dd866ee1c2256bd09182ef44ee825a5d
+registerApps1Tx status=0x1 Success gas=500000 gasUsed=154833 costETH=0.000154833 costUSD=0.047645365593 @ ETH/USD=307.721 gasPrice=1 gwei block=142 txIx=2 txId=0x996fc256aa2ac9950ebb1772dc0ed5d327d14b1ff465e447b9372fefce2c346d @ 1512585059 Wed, 06 Dec 2017 18:30:59 UTC
+registerApps2Tx status=0x1 Success gas=500000 gasUsed=154769 costETH=0.000154769 costUSD=0.047625671449 @ ETH/USD=307.721 gasPrice=1 gwei block=142 txIx=1 txId=0xfa2373e70ee70101143fa4f428a188f7ec3073cc2701b0ed5ca13acf6fe87300 @ 1512585059 Wed, 06 Dec 2017 18:30:59 UTC
+registerApps3Tx status=0x1 Success gas=500000 gasUsed=169833 costETH=0.000169833 costUSD=0.052261180593 @ ETH/USD=307.721 gasPrice=1 gwei block=142 txIx=0 txId=0x9338533cdb92005bb33acfd6033e456b7b15a6b4941ac5cb4a6ee4437c19e808 @ 1512585059 Wed, 06 Dec 2017 18:30:59 UTC
+registryContractAddress=0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b
 registry.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 registry.newOwner=0x0000000000000000000000000000000000000000
-registry.token=0x8d81072d03ab6c02276501b9d3efd8e67612d52d
-registry.feeAccount=0xa44a08d3f6933c69212114bb66e2df1813651844
+registry.token=0x3529089fbacf865e6771ddb8a76ac997963a5393
+registry.feeAccount=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0
 registry.fee=500000000000000000 0.5 ETH
 registry.appAccountsLength=3
-registry.appAccounts(0)=0xa55a151eb00fded1634d27d1127b4be4627079ea ["0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery","0xa88a05d2b88283ce84c8325760b72a64591279a2","1500000000000000000",true]
-registry.appAccounts(1)=0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec ["0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec","Zevery","0xaaaa9de1e6c564446ebca0fd102d8bd92093c756","1500000000000000000",true]
-registry.appAccounts(2)=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 ["0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","Mevery","0xa99a0ae3354c06b1459fd441a32a3f71005d7da0","2000000000000000000",true]
+registry.appAccounts(0)=0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec ["0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec","Zevery","0xaaaa9de1e6c564446ebca0fd102d8bd92093c756","1500000000000000000",true]
+registry.appAccounts(1)=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 ["0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","Mevery","0xa99a0ae3354c06b1459fd441a32a3f71005d7da0","2000000000000000000",true]
+registry.appAccounts(2)=0xa55a151eb00fded1634d27d1127b4be4627079ea ["0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery","0xa88a05d2b88283ce84c8325760b72a64591279a2","1500000000000000000",true]
 registry.brandAccountsLength=0
 registry.productAccountsLength=0
-AppAdded 0 #92 {"active":true,"appAccount":"0xa55a151eb00fded1634d27d1127b4be4627079ea","appName":"Bevery","fee":"1500000000000000000","feeAccount":"0xa88a05d2b88283ce84c8325760b72a64591279a2"}
-AppAdded 1 #92 {"active":true,"appAccount":"0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec","appName":"Zevery","fee":"1500000000000000000","feeAccount":"0xaaaa9de1e6c564446ebca0fd102d8bd92093c756"}
-AppAdded 2 #92 {"active":true,"appAccount":"0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","appName":"Mevery","fee":"2000000000000000000","feeAccount":"0xa99a0ae3354c06b1459fd441a32a3f71005d7da0"}
+AppAdded 0 #142 {"active":true,"appAccount":"0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec","appName":"Zevery","fee":"1500000000000000000","feeAccount":"0xaaaa9de1e6c564446ebca0fd102d8bd92093c756"}
+AppAdded 1 #142 {"active":true,"appAccount":"0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","appName":"Mevery","fee":"2000000000000000000","feeAccount":"0xa99a0ae3354c06b1459fd441a32a3f71005d7da0"}
+AppAdded 2 #142 {"active":true,"appAccount":"0xa55a151eb00fded1634d27d1127b4be4627079ea","appName":"Bevery","fee":"1500000000000000000","feeAccount":"0xa88a05d2b88283ce84c8325760b72a64591279a2"}
 
 Register Brand Accounts
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       45.004751246000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003896047000000000       99000.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       54.004730387000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003875188000000000       99000.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Devery Fee Account
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
- 5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.000454487000000000           0.000000000000000000 Bevery App Account
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.000439487000000000           0.000000000000000000 Bevery App Account
  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9       -0.000154769000000000           0.000000000000000000 Mevery App Account
- 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec       -0.000154833000000000           0.000000000000000000 Zevery App Account
+ 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec       -0.000169833000000000           0.000000000000000000 Zevery App Account
  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Bevery Fee Account
  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Mevery Fee Account
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Zevery Fee Account
@@ -234,44 +234,44 @@ Register Brand Accounts
 16 0xb00bfde102270687324f9205b693859df64f8923        0.000000000000000000           0.000000000000000000 Bevery Marker 2
 17 0xb11be1d4ef8e94d01cb2695092a79d139a8dad98        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product A Item 1
 18 0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product B Item 2
-19 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.000000000000000000 Devery Registry
-20 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.000000000000000000 Token 'TestEVE' 'Test EVE'
+19 0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b        0.000000000000000000           0.000000000000000000 Devery Registry
+20 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 Token 'TestEVE' 'Test EVE'
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                100000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Register Brand Accounts - Bevery Brand 1
 PASS Register Brand Accounts - Bevery Brand 2
-registerBrands1Tx status=0x1 Success gas=500000 gasUsed=149827 costETH=0.000149827 costUSD=0.046104914267 @ ETH/USD=307.721 gasPrice=1 gwei block=95 txIx=0 txId=0xf6abc75d94b31f9c41d07130728bb70ccff11d12956c923cec11f6a68ff47439 @ 1512583350 Wed, 06 Dec 2017 18:02:30 UTC
-registerBrands2Tx status=0x1 Success gas=500000 gasUsed=134827 costETH=0.000134827 costUSD=0.041489099267 @ ETH/USD=307.721 gasPrice=1 gwei block=95 txIx=1 txId=0xdf52d15d5db8277bd395c945d2f99cbb21ebb9e3a2278228882c1d0b8b394795 @ 1512583350 Wed, 06 Dec 2017 18:02:30 UTC
-registryContractAddress=0x8947c758dd866ee1c2256bd09182ef44ee825a5d
+registerBrands1Tx status=0x1 Success gas=500000 gasUsed=149827 costETH=0.000149827 costUSD=0.046104914267 @ ETH/USD=307.721 gasPrice=1 gwei block=144 txIx=0 txId=0xcdcdd896e8a102b9d14fead8126142c2ca8b9afe2db0bca6c9c93f9fa8440435 @ 1512585068 Wed, 06 Dec 2017 18:31:08 UTC
+registerBrands2Tx status=0x1 Success gas=500000 gasUsed=134827 costETH=0.000134827 costUSD=0.041489099267 @ ETH/USD=307.721 gasPrice=1 gwei block=144 txIx=1 txId=0xbadf097353065b156402ab6b40177a361446c7dfa0c23559da930efc6a1c6584 @ 1512585068 Wed, 06 Dec 2017 18:31:08 UTC
+registryContractAddress=0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b
 registry.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 registry.newOwner=0x0000000000000000000000000000000000000000
-registry.token=0x8d81072d03ab6c02276501b9d3efd8e67612d52d
-registry.feeAccount=0xa44a08d3f6933c69212114bb66e2df1813651844
+registry.token=0x3529089fbacf865e6771ddb8a76ac997963a5393
+registry.feeAccount=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0
 registry.fee=500000000000000000 0.5 ETH
 registry.appAccountsLength=3
-registry.appAccounts(0)=0xa55a151eb00fded1634d27d1127b4be4627079ea ["0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery","0xa88a05d2b88283ce84c8325760b72a64591279a2","1500000000000000000",true]
-registry.appAccounts(1)=0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec ["0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec","Zevery","0xaaaa9de1e6c564446ebca0fd102d8bd92093c756","1500000000000000000",true]
-registry.appAccounts(2)=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 ["0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","Mevery","0xa99a0ae3354c06b1459fd441a32a3f71005d7da0","2000000000000000000",true]
+registry.appAccounts(0)=0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec ["0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec","Zevery","0xaaaa9de1e6c564446ebca0fd102d8bd92093c756","1500000000000000000",true]
+registry.appAccounts(1)=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 ["0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","Mevery","0xa99a0ae3354c06b1459fd441a32a3f71005d7da0","2000000000000000000",true]
+registry.appAccounts(2)=0xa55a151eb00fded1634d27d1127b4be4627079ea ["0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery","0xa88a05d2b88283ce84c8325760b72a64591279a2","1500000000000000000",true]
 registry.brandAccountsLength=2
 registry.brandAccounts(0)=0xabba43e7594e3b76afb157989e93c6621497fd4b ["0xabba43e7594e3b76afb157989e93c6621497fd4b","0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery Brand 1",true]
 registry.brandAccounts(1)=0xacca534c9f62ab495bd986e002ddf0f054caae4f ["0xacca534c9f62ab495bd986e002ddf0f054caae4f","0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery Brand 2",true]
 registry.productAccountsLength=0
-BrandAdded 0 #95 {"active":true,"appAccount":"0xa55a151eb00fded1634d27d1127b4be4627079ea","brandAccount":"0xabba43e7594e3b76afb157989e93c6621497fd4b","brandName":"Bevery Brand 1"}
-BrandAdded 1 #95 {"active":true,"appAccount":"0xa55a151eb00fded1634d27d1127b4be4627079ea","brandAccount":"0xacca534c9f62ab495bd986e002ddf0f054caae4f","brandName":"Bevery Brand 2"}
+BrandAdded 0 #144 {"active":true,"appAccount":"0xa55a151eb00fded1634d27d1127b4be4627079ea","brandAccount":"0xabba43e7594e3b76afb157989e93c6621497fd4b","brandName":"Bevery Brand 1"}
+BrandAdded 1 #144 {"active":true,"appAccount":"0xa55a151eb00fded1634d27d1127b4be4627079ea","brandAccount":"0xacca534c9f62ab495bd986e002ddf0f054caae4f","brandName":"Bevery Brand 2"}
 
 Register Brand Accounts
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       57.005165394000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003896047000000000       99000.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       66.005144535000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003875188000000000       99000.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Devery Fee Account
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
- 5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.000454487000000000           0.000000000000000000 Bevery App Account
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.000439487000000000           0.000000000000000000 Bevery App Account
  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9       -0.000154769000000000           0.000000000000000000 Mevery App Account
- 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec       -0.000154833000000000           0.000000000000000000 Zevery App Account
+ 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec       -0.000169833000000000           0.000000000000000000 Zevery App Account
  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Bevery Fee Account
  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Mevery Fee Account
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Zevery Fee Account
@@ -283,46 +283,46 @@ Register Brand Accounts
 16 0xb00bfde102270687324f9205b693859df64f8923        0.000000000000000000           0.000000000000000000 Bevery Marker 2
 17 0xb11be1d4ef8e94d01cb2695092a79d139a8dad98        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product A Item 1
 18 0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product B Item 2
-19 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.000000000000000000 Devery Registry
-20 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.000000000000000000 Token 'TestEVE' 'Test EVE'
+19 0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b        0.000000000000000000           0.000000000000000000 Devery Registry
+20 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 Token 'TestEVE' 'Test EVE'
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                100000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Register Brand Accounts - Bevery Brand 1 Product A
 PASS Register Brand Accounts - Bevery Brand 1 Product B
-registerProducts1Tx status=0x1 Success gas=500000 gasUsed=214542 costETH=0.000214542 costUSD=0.066019078782 @ ETH/USD=307.721 gasPrice=1 gwei block=99 txIx=0 txId=0x84537c4d57a0f67eaf2ab3f0940539fc2ce481f6250c43c41f738ed00ee3fbf7 @ 1512583354 Wed, 06 Dec 2017 18:02:34 UTC
-registerProducts2Tx status=0x1 Success gas=500000 gasUsed=199606 costETH=0.000199606 costUSD=0.061422957926 @ ETH/USD=307.721 gasPrice=1 gwei block=99 txIx=1 txId=0xc44e86c91cba35eb7d64bb6d652bfe063754c0233dd27e24da03e442a0881010 @ 1512583354 Wed, 06 Dec 2017 18:02:34 UTC
-registryContractAddress=0x8947c758dd866ee1c2256bd09182ef44ee825a5d
+registerProducts1Tx status=0x1 Success gas=500000 gasUsed=214542 costETH=0.000214542 costUSD=0.066019078782 @ ETH/USD=307.721 gasPrice=1 gwei block=148 txIx=0 txId=0x5630476625ddcd5547d276cd86e9f350ae30ffee432be6da5315a954e5458e7e @ 1512585078 Wed, 06 Dec 2017 18:31:18 UTC
+registerProducts2Tx status=0x1 Success gas=500000 gasUsed=199606 costETH=0.000199606 costUSD=0.061422957926 @ ETH/USD=307.721 gasPrice=1 gwei block=148 txIx=1 txId=0xf45ee340a4d26b15443bb5878cec09c59c590a2f5d51abf99389824c09d6d8fb @ 1512585078 Wed, 06 Dec 2017 18:31:18 UTC
+registryContractAddress=0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b
 registry.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 registry.newOwner=0x0000000000000000000000000000000000000000
-registry.token=0x8d81072d03ab6c02276501b9d3efd8e67612d52d
-registry.feeAccount=0xa44a08d3f6933c69212114bb66e2df1813651844
+registry.token=0x3529089fbacf865e6771ddb8a76ac997963a5393
+registry.feeAccount=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0
 registry.fee=500000000000000000 0.5 ETH
 registry.appAccountsLength=3
-registry.appAccounts(0)=0xa55a151eb00fded1634d27d1127b4be4627079ea ["0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery","0xa88a05d2b88283ce84c8325760b72a64591279a2","1500000000000000000",true]
-registry.appAccounts(1)=0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec ["0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec","Zevery","0xaaaa9de1e6c564446ebca0fd102d8bd92093c756","1500000000000000000",true]
-registry.appAccounts(2)=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 ["0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","Mevery","0xa99a0ae3354c06b1459fd441a32a3f71005d7da0","2000000000000000000",true]
+registry.appAccounts(0)=0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec ["0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec","Zevery","0xaaaa9de1e6c564446ebca0fd102d8bd92093c756","1500000000000000000",true]
+registry.appAccounts(1)=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 ["0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","Mevery","0xa99a0ae3354c06b1459fd441a32a3f71005d7da0","2000000000000000000",true]
+registry.appAccounts(2)=0xa55a151eb00fded1634d27d1127b4be4627079ea ["0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery","0xa88a05d2b88283ce84c8325760b72a64591279a2","1500000000000000000",true]
 registry.brandAccountsLength=2
 registry.brandAccounts(0)=0xabba43e7594e3b76afb157989e93c6621497fd4b ["0xabba43e7594e3b76afb157989e93c6621497fd4b","0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery Brand 1",true]
 registry.brandAccounts(1)=0xacca534c9f62ab495bd986e002ddf0f054caae4f ["0xacca534c9f62ab495bd986e002ddf0f054caae4f","0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery Brand 2",true]
 registry.productAccountsLength=2
 registry.productAccounts(0)=0xadda9b762a00ff12711113bfdc36958b73d7f915 ["0xadda9b762a00ff12711113bfdc36958b73d7f915","0xabba43e7594e3b76afb157989e93c6621497fd4b","Bevery Brand 1 Product A","eeeeks","2016","AU",true]
 registry.productAccounts(1)=0xaeea63b5479b50f79583ec49dacdcf86ddeff392 ["0xaeea63b5479b50f79583ec49dacdcf86ddeff392","0xabba43e7594e3b76afb157989e93c6621497fd4b","Bevery Brand 1 Product B","yiikes","2017","AU",true]
-ProductAdded 0 #99 {"active":true,"appAccount":"0xa55a151eb00fded1634d27d1127b4be4627079ea","brandAccount":"0xabba43e7594e3b76afb157989e93c6621497fd4b","description":"Bevery Brand 1 Product A","productAccount":"0xadda9b762a00ff12711113bfdc36958b73d7f915"}
-ProductAdded 1 #99 {"active":true,"appAccount":"0xa55a151eb00fded1634d27d1127b4be4627079ea","brandAccount":"0xabba43e7594e3b76afb157989e93c6621497fd4b","description":"Bevery Brand 1 Product B","productAccount":"0xaeea63b5479b50f79583ec49dacdcf86ddeff392"}
+ProductAdded 0 #148 {"active":true,"appAccount":"0xa55a151eb00fded1634d27d1127b4be4627079ea","brandAccount":"0xabba43e7594e3b76afb157989e93c6621497fd4b","description":"Bevery Brand 1 Product A","productAccount":"0xadda9b762a00ff12711113bfdc36958b73d7f915"}
+ProductAdded 1 #148 {"active":true,"appAccount":"0xa55a151eb00fded1634d27d1127b4be4627079ea","brandAccount":"0xabba43e7594e3b76afb157989e93c6621497fd4b","description":"Bevery Brand 1 Product B","productAccount":"0xaeea63b5479b50f79583ec49dacdcf86ddeff392"}
 
 Permission Marker For Brands
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       63.005256294000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003896047000000000       99000.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       78.005235435000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003875188000000000       99000.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Devery Fee Account
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
- 5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.000454487000000000           0.000000000000000000 Bevery App Account
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.000439487000000000           0.000000000000000000 Bevery App Account
  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9       -0.000154769000000000           0.000000000000000000 Mevery App Account
- 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec       -0.000154833000000000           0.000000000000000000 Zevery App Account
+ 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec       -0.000169833000000000           0.000000000000000000 Zevery App Account
  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Bevery Fee Account
  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Mevery Fee Account
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Zevery Fee Account
@@ -334,86 +334,98 @@ Permission Marker For Brands
 16 0xb00bfde102270687324f9205b693859df64f8923        0.000000000000000000           0.000000000000000000 Bevery Marker 2
 17 0xb11be1d4ef8e94d01cb2695092a79d139a8dad98        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product A Item 1
 18 0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product B Item 2
-19 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.000000000000000000 Devery Registry
-20 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.000000000000000000 Token 'TestEVE' 'Test EVE'
+19 0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b        0.000000000000000000           0.000000000000000000 Devery Registry
+20 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 Token 'TestEVE' 'Test EVE'
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                100000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Permission Marker For Brands - Permission Bevery Marker 1
 PASS Permission Marker For Brands - Permission Bevery Marker 2
-permissionMarkers1Tx status=0x1 Success gas=500000 gasUsed=45450 costETH=0.00004545 costUSD=0.01398591945 @ ETH/USD=307.721 gasPrice=1 gwei block=101 txIx=0 txId=0x992929baa07bfab87dfb4ea792d72f8b496d4668fc71ee8521d24d3299533826 @ 1512583360 Wed, 06 Dec 2017 18:02:40 UTC
-permissionMarkers2Tx status=0x1 Success gas=500000 gasUsed=45450 costETH=0.00004545 costUSD=0.01398591945 @ ETH/USD=307.721 gasPrice=1 gwei block=101 txIx=1 txId=0xa4392121291eeea70b46c61dda6f2891721fb5e3668fae52c028b12da490ac7e @ 1512583360 Wed, 06 Dec 2017 18:02:40 UTC
-registryContractAddress=0x8947c758dd866ee1c2256bd09182ef44ee825a5d
+permissionMarkers1Tx status=0x1 Success gas=500000 gasUsed=45450 costETH=0.00004545 costUSD=0.01398591945 @ ETH/USD=307.721 gasPrice=1 gwei block=152 txIx=0 txId=0x641d84107d2cdc105cee1d3b60a8ef92639413aac22b8afccc1d2872b2bf188e @ 1512585082 Wed, 06 Dec 2017 18:31:22 UTC
+permissionMarkers2Tx status=0x1 Success gas=500000 gasUsed=45450 costETH=0.00004545 costUSD=0.01398591945 @ ETH/USD=307.721 gasPrice=1 gwei block=152 txIx=1 txId=0x83a5d1d061c83b6fb41d1973be4b38a6f8eb7e0f0a087961c28510e60ec44d35 @ 1512585082 Wed, 06 Dec 2017 18:31:22 UTC
+registryContractAddress=0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b
 registry.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 registry.newOwner=0x0000000000000000000000000000000000000000
-registry.token=0x8d81072d03ab6c02276501b9d3efd8e67612d52d
-registry.feeAccount=0xa44a08d3f6933c69212114bb66e2df1813651844
+registry.token=0x3529089fbacf865e6771ddb8a76ac997963a5393
+registry.feeAccount=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0
 registry.fee=500000000000000000 0.5 ETH
 registry.appAccountsLength=3
-registry.appAccounts(0)=0xa55a151eb00fded1634d27d1127b4be4627079ea ["0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery","0xa88a05d2b88283ce84c8325760b72a64591279a2","1500000000000000000",true]
-registry.appAccounts(1)=0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec ["0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec","Zevery","0xaaaa9de1e6c564446ebca0fd102d8bd92093c756","1500000000000000000",true]
-registry.appAccounts(2)=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 ["0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","Mevery","0xa99a0ae3354c06b1459fd441a32a3f71005d7da0","2000000000000000000",true]
+registry.appAccounts(0)=0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec ["0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec","Zevery","0xaaaa9de1e6c564446ebca0fd102d8bd92093c756","1500000000000000000",true]
+registry.appAccounts(1)=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 ["0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","Mevery","0xa99a0ae3354c06b1459fd441a32a3f71005d7da0","2000000000000000000",true]
+registry.appAccounts(2)=0xa55a151eb00fded1634d27d1127b4be4627079ea ["0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery","0xa88a05d2b88283ce84c8325760b72a64591279a2","1500000000000000000",true]
 registry.brandAccountsLength=2
 registry.brandAccounts(0)=0xabba43e7594e3b76afb157989e93c6621497fd4b ["0xabba43e7594e3b76afb157989e93c6621497fd4b","0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery Brand 1",true]
 registry.brandAccounts(1)=0xacca534c9f62ab495bd986e002ddf0f054caae4f ["0xacca534c9f62ab495bd986e002ddf0f054caae4f","0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery Brand 2",true]
 registry.productAccountsLength=2
 registry.productAccounts(0)=0xadda9b762a00ff12711113bfdc36958b73d7f915 ["0xadda9b762a00ff12711113bfdc36958b73d7f915","0xabba43e7594e3b76afb157989e93c6621497fd4b","Bevery Brand 1 Product A","eeeeks","2016","AU",true]
 registry.productAccounts(1)=0xaeea63b5479b50f79583ec49dacdcf86ddeff392 ["0xaeea63b5479b50f79583ec49dacdcf86ddeff392","0xabba43e7594e3b76afb157989e93c6621497fd4b","Bevery Brand 1 Product B","yiikes","2017","AU",true]
-Permissioned 0 #101 {"brandAccount":"0xabba43e7594e3b76afb157989e93c6621497fd4b","marker":"0xaffa4d3a80add8ce4018540e056dacb649589394","permission":true}
-Permissioned 1 #101 {"brandAccount":"0xabba43e7594e3b76afb157989e93c6621497fd4b","marker":"0xb00bfde102270687324f9205b693859df64f8923","permission":true}
+Permissioned 0 #152 {"brandAccount":"0xabba43e7594e3b76afb157989e93c6621497fd4b","marker":"0xaffa4d3a80add8ce4018540e056dacb649589394","permission":true}
+Permissioned 1 #152 {"brandAccount":"0xabba43e7594e3b76afb157989e93c6621497fd4b","marker":"0xb00bfde102270687324f9205b693859df64f8923","permission":true}
 
 Mark Items
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       72.005366624000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003896047000000000       99000.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       87.005416771000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003875188000000000       99000.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Wallet
- 3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3 - Devery Fee Account
+ 3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           1.000000000000000000 Account #3 - Devery Fee Account
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
- 5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.000454487000000000           0.000000000000000000 Bevery App Account
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea       -0.000439487000000000           0.000000000000000000 Bevery App Account
  6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9       -0.000154769000000000           0.000000000000000000 Mevery App Account
- 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec       -0.000154833000000000           0.000000000000000000 Zevery App Account
- 8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Bevery Fee Account
+ 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec       -0.000169833000000000           0.000000000000000000 Zevery App Account
+ 8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           3.000000000000000000 Bevery Fee Account
  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Mevery Fee Account
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Zevery Fee Account
-11 0xabba43e7594e3b76afb157989e93c6621497fd4b       -0.000596158000000000        1000.000000000000000000 Bevery Brand 1 Account
+11 0xabba43e7594e3b76afb157989e93c6621497fd4b       -0.000596158000000000         996.000000000000000000 Bevery Brand 1 Account
 12 0xacca534c9f62ab495bd986e002ddf0f054caae4f        0.000000000000000000           0.000000000000000000 Bevery Brand 2 Account
 13 0xadda9b762a00ff12711113bfdc36958b73d7f915        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product A Account
 14 0xaeea63b5479b50f79583ec49dacdcf86ddeff392        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product B Account
-15 0xaffa4d3a80add8ce4018540e056dacb649589394       -0.000055101000000000           0.000000000000000000 Bevery Marker 1
-16 0xb00bfde102270687324f9205b693859df64f8923       -0.000055229000000000           0.000000000000000000 Bevery Marker 2
+15 0xaffa4d3a80add8ce4018540e056dacb649589394       -0.000075604000000000           0.000000000000000000 Bevery Marker 1
+16 0xb00bfde102270687324f9205b693859df64f8923       -0.000105732000000000           0.000000000000000000 Bevery Marker 2
 17 0xb11be1d4ef8e94d01cb2695092a79d139a8dad98        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product A Item 1
 18 0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f        0.000000000000000000           0.000000000000000000 Bevery Brand 1 Product B Item 2
-19 0x8947c758dd866ee1c2256bd09182ef44ee825a5d        0.000000000000000000           0.000000000000000000 Devery Registry
-20 0x8d81072d03ab6c02276501b9d3efd8e67612d52d        0.000000000000000000           0.000000000000000000 Token 'TestEVE' 'Test EVE'
+19 0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b        0.000000000000000000           0.000000000000000000 Devery Registry
+20 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 Token 'TestEVE' 'Test EVE'
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                100000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
-FAIL Mark Items - Mark Bevery Brand 1 Product A Item 1
-FAIL Mark Items - Mark Bevery Brand 1 Product A Item 2
-markItems1Tx status=0x0 Failure gas=500000 gasUsed=55101 costETH=0.000055101 costUSD=0.016955734821 @ ETH/USD=307.721 gasPrice=1 gwei block=104 txIx=0 txId=0x0d7a722421b4a1cf646cfdaab1232fc48c615e6f76173980d5ad7e537d491923 @ 1512583365 Wed, 06 Dec 2017 18:02:45 UTC
-markItems2Tx status=0x0 Failure gas=500000 gasUsed=55229 costETH=0.000055229 costUSD=0.016995123109 @ ETH/USD=307.721 gasPrice=1 gwei block=104 txIx=1 txId=0xc2a2eb3feabf0e0073854f20f719b776f4c838353fb257d0effe9d31ca828e64 @ 1512583365 Wed, 06 Dec 2017 18:02:45 UTC
-registryContractAddress=0x8947c758dd866ee1c2256bd09182ef44ee825a5d
+PASS Mark Items - Mark Bevery Brand 1 Product A Item 1
+PASS Mark Items - Mark Bevery Brand 1 Product A Item 2
+markItems1Tx status=0x1 Success gas=500000 gasUsed=75604 costETH=0.000075604 costUSD=0.023264938484 @ ETH/USD=307.721 gasPrice=1 gwei block=155 txIx=1 txId=0x97db2f852dc5abc148b051f17ef2b6042eae31336c25d9447cd326ed88b1a5a1 @ 1512585087 Wed, 06 Dec 2017 18:31:27 UTC
+markItems2Tx status=0x1 Success gas=500000 gasUsed=105732 costETH=0.000105732 costUSD=0.032535956772 @ ETH/USD=307.721 gasPrice=1 gwei block=155 txIx=0 txId=0x3307cfe505d80ca9e11e2fbc264928dc5d0cd72c31fc69347c0433f676131cf5 @ 1512585087 Wed, 06 Dec 2017 18:31:27 UTC
+registryContractAddress=0x60c8e00dafb889136ebd2dc558d0d00a69b7a84b
 registry.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 registry.newOwner=0x0000000000000000000000000000000000000000
-registry.token=0x8d81072d03ab6c02276501b9d3efd8e67612d52d
-registry.feeAccount=0xa44a08d3f6933c69212114bb66e2df1813651844
+registry.token=0x3529089fbacf865e6771ddb8a76ac997963a5393
+registry.feeAccount=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0
 registry.fee=500000000000000000 0.5 ETH
 registry.appAccountsLength=3
-registry.appAccounts(0)=0xa55a151eb00fded1634d27d1127b4be4627079ea ["0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery","0xa88a05d2b88283ce84c8325760b72a64591279a2","1500000000000000000",true]
-registry.appAccounts(1)=0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec ["0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec","Zevery","0xaaaa9de1e6c564446ebca0fd102d8bd92093c756","1500000000000000000",true]
-registry.appAccounts(2)=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 ["0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","Mevery","0xa99a0ae3354c06b1459fd441a32a3f71005d7da0","2000000000000000000",true]
+registry.appAccounts(0)=0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec ["0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec","Zevery","0xaaaa9de1e6c564446ebca0fd102d8bd92093c756","1500000000000000000",true]
+registry.appAccounts(1)=0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9 ["0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9","Mevery","0xa99a0ae3354c06b1459fd441a32a3f71005d7da0","2000000000000000000",true]
+registry.appAccounts(2)=0xa55a151eb00fded1634d27d1127b4be4627079ea ["0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery","0xa88a05d2b88283ce84c8325760b72a64591279a2","1500000000000000000",true]
 registry.brandAccountsLength=2
 registry.brandAccounts(0)=0xabba43e7594e3b76afb157989e93c6621497fd4b ["0xabba43e7594e3b76afb157989e93c6621497fd4b","0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery Brand 1",true]
 registry.brandAccounts(1)=0xacca534c9f62ab495bd986e002ddf0f054caae4f ["0xacca534c9f62ab495bd986e002ddf0f054caae4f","0xa55a151eb00fded1634d27d1127b4be4627079ea","Bevery Brand 2",true]
 registry.productAccountsLength=2
 registry.productAccounts(0)=0xadda9b762a00ff12711113bfdc36958b73d7f915 ["0xadda9b762a00ff12711113bfdc36958b73d7f915","0xabba43e7594e3b76afb157989e93c6621497fd4b","Bevery Brand 1 Product A","eeeeks","2016","AU",true]
 registry.productAccounts(1)=0xaeea63b5479b50f79583ec49dacdcf86ddeff392 ["0xaeea63b5479b50f79583ec49dacdcf86ddeff392","0xabba43e7594e3b76afb157989e93c6621497fd4b","Bevery Brand 1 Product B","yiikes","2017","AU",true]
+Marked 0 #155 {"itemHash":"0x72155cd1c213c52cf878b5a5870f491df385a53fc68499ec839865239c19a7d1","marker":"0xb00bfde102270687324f9205b693859df64f8923","productAccount":"0xaeea63b5479b50f79583ec49dacdcf86ddeff392"}
+Marked 1 #155 {"itemHash":"0x2b3634a5c18d4e8930e0f611da00ec8a02f8621a48cfe55f3ed01f2403714bcd","marker":"0xaffa4d3a80add8ce4018540e056dacb649589394","productAccount":"0xadda9b762a00ff12711113bfdc36958b73d7f915"}
+tokenContractAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393
+token.owner=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+token.newOwner=0x0000000000000000000000000000000000000000
+token.symbol=TestEVE
+token.name=Test EVE
+token.decimals=18
+token.totalSupply=100000
+Transfer 0 #155: from=0xabba43e7594e3b76afb157989e93c6621497fd4b to=0xa88a05d2b88283ce84c8325760b72a64591279a2 tokens=1.5
+Transfer 1 #155: from=0xabba43e7594e3b76afb157989e93c6621497fd4b to=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0 tokens=0.5
+Transfer 2 #155: from=0xabba43e7594e3b76afb157989e93c6621497fd4b to=0xa88a05d2b88283ce84c8325760b72a64591279a2 tokens=1.5
+Transfer 3 #155: from=0xabba43e7594e3b76afb157989e93c6621497fd4b to=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0 tokens=0.5
 
-Checking Bevery Brand 1 Product A Item 1: 0xb11be1d4ef8e94d01cb2695092a79d139a8dad98 productAccount=0x0000000000000000000000000000000000000000 brandAccount=0x0000000000000000000000000000000000000000 appAccount=0x0000000000000000000000000000000000000000
-  productDetails: ["0x0000000000000000000000000000000000000000","0x0000000000000000000000000000000000000000","","","0","",false]
-Checking Bevery Brand 1 Product A Item 2: 0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f productAccount=0x0000000000000000000000000000000000000000 brandAccount=0x0000000000000000000000000000000000000000 appAccount=0x0000000000000000000000000000000000000000
-  productDetails: ["0x0000000000000000000000000000000000000000","0x0000000000000000000000000000000000000000","","","0","",false]
-Checking Invalid Item: 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0 productAccount=0x0000000000000000000000000000000000000000 brandAccount=0x0000000000000000000000000000000000000000 appAccount=0x0000000000000000000000000000000000000000
+Checking Bevery Brand 1 Product A Item 1: 0xb11be1d4ef8e94d01cb2695092a79d139a8dad98 productAccount=0xadda9b762a00ff12711113bfdc36958b73d7f915 brandAccount=0xabba43e7594e3b76afb157989e93c6621497fd4b appAccount=0xa55a151eb00fded1634d27d1127b4be4627079ea
+  productDetails: ["0xadda9b762a00ff12711113bfdc36958b73d7f915","0xabba43e7594e3b76afb157989e93c6621497fd4b","Bevery Brand 1 Product A","eeeeks","2016","AU",true]
+Checking Bevery Brand 1 Product A Item 2: 0xb22be2d9eef0d7e260cf96a64feea0b95ed3e74f productAccount=0xaeea63b5479b50f79583ec49dacdcf86ddeff392 brandAccount=0xabba43e7594e3b76afb157989e93c6621497fd4b appAccount=0xa55a151eb00fded1634d27d1127b4be4627079ea
+  productDetails: ["0xaeea63b5479b50f79583ec49dacdcf86ddeff392","0xabba43e7594e3b76afb157989e93c6621497fd4b","Bevery Brand 1 Product B","yiikes","2017","AU",true]
