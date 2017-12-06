@@ -156,7 +156,7 @@ while (txpool.status.pending > 0) {
 printBalances();
 failIfTxStatusError(tokenTx, tokenMessage);
 printTxData("tokenAddress=" + tokenAddress, tokenTx);
-printRegistryContractDetails();
+printTokenContractDetails();
 console.log("RESULT: ");
 
 
@@ -166,14 +166,24 @@ var setTokenAndFeeMessage = "Set Token, Fee Account And Fee";
 console.log("RESULT: " + setTokenAndFeeMessage);
 var setTokenAndFee1Tx = registry.setToken(tokenAddress, {from: contractOwnerAccount, gas: 500000, gasPrice: defaultGasPrice});
 var setTokenAndFee2Tx = registry.setFee(feeAccount, new BigNumber(0.5).shift(18), {from: contractOwnerAccount, gas: 500000, gasPrice: defaultGasPrice});
+var setTokenAndFee3Tx = token.transfer(beveryBrand1Account, new BigNumber(1000).shift(18), {from: contractOwnerAccount, gas: 500000, gasPrice: defaultGasPrice});
+var setTokenAndFee4Tx = token.approve(beveryMarker1Account, new BigNumber(1000).shift(18), {from: beveryBrand1Account, gas: 500000, gasPrice: defaultGasPrice});
+var setTokenAndFee5Tx = token.approve(beveryMarker2Account, new BigNumber(1000).shift(18), {from: beveryBrand1Account, gas: 500000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
 printBalances();
 failIfTxStatusError(setTokenAndFee1Tx, setTokenAndFeeMessage + " - registry.setToken(token)");
-failIfTxStatusError(setTokenAndFee1Tx, setTokenAndFeeMessage + " - registry.setFee(feeAccount, fee)");
+failIfTxStatusError(setTokenAndFee2Tx, setTokenAndFeeMessage + " - registry.setFee(feeAccount, fee)");
+failIfTxStatusError(setTokenAndFee3Tx, setTokenAndFeeMessage + " - token.transfer(beveryBrand1Account, 1000) from contractOwnerAccount");
+failIfTxStatusError(setTokenAndFee4Tx, setTokenAndFeeMessage + " - token.approve(beveryMarker1Account, 1000) from beveryBrand1Account");
+failIfTxStatusError(setTokenAndFee5Tx, setTokenAndFeeMessage + " - token.approve(beveryMarker2Account, 1000) from beveryBrand1Account");
 printTxData("setTokenAndFee1Tx", setTokenAndFee1Tx);
 printTxData("setTokenAndFee2Tx", setTokenAndFee2Tx);
+printTxData("setTokenAndFee3Tx", setTokenAndFee3Tx);
+printTxData("setTokenAndFee4Tx", setTokenAndFee4Tx);
+printTxData("setTokenAndFee5Tx", setTokenAndFee5Tx);
 printRegistryContractDetails();
+printTokenContractDetails();
 console.log("RESULT: ");
 
 

@@ -311,10 +311,18 @@ contract DeveryRegistry is Admined {
         require(product.brandAccount != address(0));
         Brand storage brand = brands[product.brandAccount];
         require(brand.brandAccount != address(0));
+        App storage app = apps[brand.appAccount];
+        require(app.appAccount != address(0));
         bool permissioned = permissions[msg.sender][brand.brandAccount];
         require(permissioned);
         markings[itemHash] = productAccount;
         Marked(msg.sender, productAccount, itemHash);
+        if (app.fee > 0) {
+            token.transferFrom(brand.brandAccount, app.feeAccount, app.fee);
+        }
+        if (fee > 0) {
+            token.transferFrom(brand.brandAccount, feeAccount, fee);
+        }
     }
 
     // ------------------------------------------------------------------------

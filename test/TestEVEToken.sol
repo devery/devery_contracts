@@ -105,8 +105,8 @@ contract TestEVEToken is ERC20Interface, Owned, SafeMath {
     function TestEVEToken() public {
         symbol = "TestEVE";
         name = "Test EVE";
-        decimals = 0;
-        _totalSupply = 100000;
+        decimals = 18;
+        _totalSupply = 100000000000000000000000;
         balances[owner] = _totalSupply;
         Transfer(address(0), owner, _totalSupply);
     }
