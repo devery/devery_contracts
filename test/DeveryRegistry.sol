@@ -138,7 +138,7 @@ contract DeveryRegistry is Admined {
     event ProductAdded(address indexed productAccount, address indexed brandAccount, address indexed appAccount, string description, bool active);
     event ProductUpdated(address indexed productAccount, address indexed brandAccount, address indexed appAccount, string description, bool active);
     event Permissioned(address indexed marker, address indexed brandAccount, bool permission);
-    event Marked(address indexed marker, address indexed productAccount, bytes32 itemHash);
+    event Marked(address indexed marker, address indexed productAccount, address appFeeAccount, address feeAccount, uint appFee, uint fee, bytes32 itemHash);
 
 
     // ------------------------------------------------------------------------
@@ -308,15 +308,15 @@ contract DeveryRegistry is Admined {
     // ------------------------------------------------------------------------
     function mark(address productAccount, bytes32 itemHash) public {
         Product storage product = products[productAccount];
-        require(product.brandAccount != address(0));
+        require(product.brandAccount != address(0) && product.active);
         Brand storage brand = brands[product.brandAccount];
-        require(brand.brandAccount != address(0));
+        require(brand.brandAccount != address(0) && brand.active);
         App storage app = apps[brand.appAccount];
-        require(app.appAccount != address(0));
+        require(app.appAccount != address(0) && app.active);
         bool permissioned = permissions[msg.sender][brand.brandAccount];
         require(permissioned);
         markings[itemHash] = productAccount;
-        Marked(msg.sender, productAccount, itemHash);
+        Marked(msg.sender, productAccount, app.feeAccount, feeAccount, app.fee, fee, itemHash);
         if (app.fee > 0) {
             token.transferFrom(brand.brandAccount, app.feeAccount, app.fee);
         }

@@ -131,7 +131,7 @@ contract TestEVEToken is ERC20Interface, Owned, SafeMath {
     }
     function transferFrom(address from, address to, uint tokens) public returns (bool success) {
         balances[from] = safeSub(balances[from], tokens);
-        // TODO allowed[from][msg.sender] = safeSub(allowed[from][msg.sender], tokens);
+        allowed[from][msg.sender] = safeSub(allowed[from][msg.sender], tokens);
         balances[to] = safeAdd(balances[to], tokens);
         Transfer(from, to, tokens);
         return true;

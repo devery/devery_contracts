@@ -165,23 +165,20 @@ var setTokenAndFeeMessage = "Set Token, Fee Account And Fee";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + setTokenAndFeeMessage);
 var setTokenAndFee1Tx = registry.setToken(tokenAddress, {from: contractOwnerAccount, gas: 500000, gasPrice: defaultGasPrice});
-var setTokenAndFee2Tx = registry.setFee(feeAccount, new BigNumber(0.5).shift(18), {from: contractOwnerAccount, gas: 500000, gasPrice: defaultGasPrice});
+var setTokenAndFee2Tx = registry.setFee(feeAccount, new BigNumber(0.123123123).shift(18), {from: contractOwnerAccount, gas: 500000, gasPrice: defaultGasPrice});
 var setTokenAndFee3Tx = token.transfer(beveryBrand1Account, new BigNumber(1000).shift(18), {from: contractOwnerAccount, gas: 500000, gasPrice: defaultGasPrice});
-var setTokenAndFee4Tx = token.approve(beveryMarker1Account, new BigNumber(1000).shift(18), {from: beveryBrand1Account, gas: 500000, gasPrice: defaultGasPrice});
-var setTokenAndFee5Tx = token.approve(beveryMarker2Account, new BigNumber(1000).shift(18), {from: beveryBrand1Account, gas: 500000, gasPrice: defaultGasPrice});
+var setTokenAndFee4Tx = token.approve(registryAddress, new BigNumber(1000).shift(18), {from: beveryBrand1Account, gas: 500000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
 printBalances();
 failIfTxStatusError(setTokenAndFee1Tx, setTokenAndFeeMessage + " - registry.setToken(token)");
 failIfTxStatusError(setTokenAndFee2Tx, setTokenAndFeeMessage + " - registry.setFee(feeAccount, fee)");
 failIfTxStatusError(setTokenAndFee3Tx, setTokenAndFeeMessage + " - token.transfer(beveryBrand1Account, 1000) from contractOwnerAccount");
-failIfTxStatusError(setTokenAndFee4Tx, setTokenAndFeeMessage + " - token.approve(beveryMarker1Account, 1000) from beveryBrand1Account");
-failIfTxStatusError(setTokenAndFee5Tx, setTokenAndFeeMessage + " - token.approve(beveryMarker2Account, 1000) from beveryBrand1Account");
+failIfTxStatusError(setTokenAndFee4Tx, setTokenAndFeeMessage + " - token.approve(registry, 1000) from beveryBrand1Account");
 printTxData("setTokenAndFee1Tx", setTokenAndFee1Tx);
 printTxData("setTokenAndFee2Tx", setTokenAndFee2Tx);
 printTxData("setTokenAndFee3Tx", setTokenAndFee3Tx);
 printTxData("setTokenAndFee4Tx", setTokenAndFee4Tx);
-printTxData("setTokenAndFee5Tx", setTokenAndFee5Tx);
 printRegistryContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
@@ -191,9 +188,9 @@ console.log("RESULT: ");
 var registerAppsMessage = "Register App Accounts";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + registerAppsMessage);
-var registerApps1Tx = registry.addApp("Bevery", beveryFeeAccount, new BigNumber(1.5).shift(18), {from: beveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
-var registerApps2Tx = registry.addApp("Mevery", meveryFeeAccount, new BigNumber(2).shift(18), {from: meveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
-var registerApps3Tx = registry.addApp("Zevery", zeveryFeeAccount, new BigNumber(1.5).shift(18), {from: zeveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
+var registerApps1Tx = registry.addApp("Bevery", beveryFeeAccount, new BigNumber(1.111111111).shift(18), {from: beveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
+var registerApps2Tx = registry.addApp("Mevery", meveryFeeAccount, new BigNumber(2.222222222).shift(18), {from: meveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
+var registerApps3Tx = registry.addApp("Zevery", zeveryFeeAccount, new BigNumber(3.333333333).shift(18), {from: zeveryAppAccount, gas: 500000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
 printBalances();
@@ -283,8 +280,8 @@ var result2 = registry.check(beveryBrand1ProductBItem2Account);
 console.log("RESULT: Checking Bevery Brand 1 Product A Item 2: " + beveryBrand1ProductBItem2Account + " productAccount=" + result2[0] + " brandAccount=" + result2[1] + " appAccount=" + result2[2]);
 var product2 = registry.products(result2[0]);
 console.log("RESULT:   productDetails: " + JSON.stringify(product2));
-var result3 = registry.check(account3);
-console.log("RESULT: Checking Invalid Item: " + account3 + " productAccount=" + result3[0] + " brandAccount=" + result3[2] + " appAccount=" + result3[2]);
+var result3 = registry.check(account4);
+console.log("RESULT: Checking Invalid Item: " + account4 + " productAccount=" + result3[0] + " brandAccount=" + result3[2] + " appAccount=" + result3[2]);
 
 
 EOF
