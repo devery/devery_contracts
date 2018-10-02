@@ -1,7 +1,5 @@
 # Devery Protocol Contracts
 
-Status: Work in progress - EVE transferrable 1 week after crowdsale conclusion. 
-
 <br />
 
 Mainnet Address: [0x0364a98148b7031451e79b93449b20090d79702a](https://etherscan.io/address/0x0364a98148b7031451e79b93449b20090d79702a)
