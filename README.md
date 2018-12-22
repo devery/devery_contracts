@@ -162,3 +162,7 @@ Checking Invalid Item: 0xa44a08d3f6933c69212114bb66e2df1813651844 productAccount
 [DeveryRegistry.sol #caec998](https://github.com/devery/devery_contracts/blob/caec998c47ca3b9d111d58b8ea1d907b131c1706/contracts/DeveryRegistry.sol)
 has been deployed to Ropsten at address [0x654f4a3e3B7573D6b4bB7201AB70d718961765CD](https://ropsten.etherscan.io/address/0x654f4a3e3B7573D6b4bB7201AB70d718961765CD#code).
 
+## Devery ERC721 Deployment on ropsten
+
+https://ropsten.etherscan.io/tx/0xa62368f806c814d50d1756fce84be03ce839aca425bd02df73e95e1c10ebae56
+
